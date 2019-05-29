@@ -29,7 +29,7 @@ This GitHub repo includes sample implementations of these concepts, with each co
 
 This repo contains six sample bots that we will use to ramp up on Bot Framework for NodeJS:
 
-1. **01-hello-world** - A simple echo bot with minimal dependencies
+1. **01-hello-world-weather** - A simple echo bot with minimal dependencies
 1. **02-luis** - Introduce LUIS concepts, including modeling, tools, and bot integration
 1. **03-luis-state** - Add "memory" to the bot to manage session state
 1. **04-luis-state-dialogs** - Add dialogs to manage UX and conversation flow
