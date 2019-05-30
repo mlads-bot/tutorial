@@ -1,0 +1,18 @@
+{
+    "name": "WeatherBot-With-Dialogs",
+    "description": "",
+    "services": [
+        {
+            "type": "endpoint",
+            "appId": "",
+            "appPassword": "",
+            "endpoint": "http://localhost:3978/api/messages",
+            "id": "3a741060-5235-11e9-9f26-89f775301152",
+            "name": "http://localhost:3978/api/messages"
+        }
+    ],
+    "padlock": "",
+    "version": "2.0",
+    "overrides": null,
+    "path": "./skills/weather-with-dialogs/WeatherBot-With-Dialogs.bot"
+}

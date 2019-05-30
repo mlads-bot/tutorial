@@ -1,0 +1,477 @@
+{
+  "luis_schema_version": "3.2.0",
+  "versionId": "0.1",
+  "name": "Weather",
+  "desc": "",
+  "culture": "en-us",
+  "tokenizerVersion": "1.0.0",
+  "intents": [
+    {
+      "name": "None"
+    },
+    {
+      "name": "Weather.Conditions.GetFeature"
+    },
+    {
+      "name": "Weather.Conditions.YesNo"
+    },
+    {
+      "name": "Weather.GetForecast",
+      "inherits": {
+        "domain_name": "Weather",
+        "model_name": "GetForecast"
+      }
+    }
+  ],
+  "entities": [
+    {
+      "name": "Weather.Location",
+      "inherits": {
+        "domain_name": "Weather",
+        "model_name": "Location"
+      },
+      "roles": []
+    }
+  ],
+  "composites": [],
+  "closedLists": [
+    {
+      "name": "Weather.Condition",
+      "subLists": [
+        {
+          "canonicalForm": "heat",
+          "list": [
+            "wearm",
+            "hot"
+          ]
+        },
+        {
+          "canonicalForm": "cold",
+          "list": [
+            "cool",
+            "freezing",
+            "chilly"
+          ]
+        },
+        {
+          "canonicalForm": "humidity",
+          "list": [
+            "muggy",
+            "sticky",
+            "sweltering",
+            "humid"
+          ]
+        },
+        {
+          "canonicalForm": "sun",
+          "list": [
+            "sun",
+            "shining",
+            "shiny",
+            "bright",
+            "sunshiny",
+            "sunlit",
+            "clear",
+            "sunny"
+          ]
+        },
+        {
+          "canonicalForm": "cloudCoverage",
+          "list": [
+            "overcast",
+            "gray",
+            "cloudy"
+          ]
+        },
+        {
+          "canonicalForm": "windGust",
+          "list": [
+            "breezy",
+            "gusty",
+            "blowy",
+            "blustery",
+            "blowing",
+            "windy",
+            "wind"
+          ]
+        },
+        {
+          "canonicalForm": "fog",
+          "list": [
+            "foggy"
+          ]
+        },
+        {
+          "canonicalForm": "temperature",
+          "list": [
+            "temp"
+          ]
+        },
+        {
+          "canonicalForm": "high",
+          "list": [
+            "max",
+            "top"
+          ]
+        },
+        {
+          "canonicalForm": "low",
+          "list": [
+            "min",
+            "bottom",
+            "lo"
+          ]
+        },
+        {
+          "canonicalForm": "ozone",
+          "list": []
+        }
+      ],
+      "roles": []
+    },
+    {
+      "name": "Weather.Gear",
+      "subLists": [
+        {
+          "canonicalForm": "rain",
+          "list": [
+            "raincoat",
+            "umbrella"
+          ]
+        }
+      ],
+      "roles": []
+    },
+    {
+      "name": "Weather.Precipitation",
+      "subLists": [
+        {
+          "canonicalForm": "rain",
+          "list": [
+            "drizzle",
+            "downpour",
+            "sprinkle",
+            "mist",
+            "shower",
+            "rainstorm",
+            "storm",
+            "downpour",
+            "pour",
+            "showers",
+            "raining",
+            "pouring"
+          ]
+        },
+        {
+          "canonicalForm": "snow",
+          "list": [
+            "snowflake",
+            "snowflakes",
+            "flakes",
+            "snowstorm",
+            "blizzard",
+            "flurries",
+            "snowing"
+          ]
+        },
+        {
+          "canonicalForm": "sleet",
+          "list": [
+            "ice",
+            "hail",
+            "icey",
+            "sleeting",
+            "hailing",
+            "ice"
+          ]
+        },
+        {
+          "canonicalForm": "any",
+          "list": [
+            "wet",
+            "precipitation"
+          ]
+        }
+      ],
+      "roles": []
+    }
+  ],
+  "patternAnyEntities": [],
+  "regex_entities": [],
+  "prebuiltEntities": [
+    {
+      "name": "datetimeV2",
+      "roles": []
+    },
+    {
+      "name": "geographyV2",
+      "roles": []
+    }
+  ],
+  "model_features": [
+    {
+      "name": "Days",
+      "mode": true,
+      "words": "monday,tuesday,wednesday,thursday,friday,saturday,sunday,next day,the day after tomorrow,today,tommorow,tonight,weekend,this morning,this afternoon,this week,tomorrow morning,now",
+      "activated": true
+    }
+  ],
+  "regex_features": [],
+  "patterns": [],
+  "utterances": [
+    {
+      "text": "\" i need to know the temperature at bangor , sme \"",
+      "intent": "Weather.GetForecast",
+      "entities": []
+    },
+    {
+      "text": "do i need an umbrella today",
+      "intent": "Weather.Conditions.YesNo",
+      "entities": []
+    },
+    {
+      "text": "forecast in celcius",
+      "intent": "Weather.GetForecast",
+      "entities": []
+    },
+    {
+      "text": "get the forcast for me",
+      "intent": "Weather.GetForecast",
+      "entities": []
+    },
+    {
+      "text": "how many inches of rain will fall",
+      "intent": "Weather.Conditions.GetFeature",
+      "entities": []
+    },
+    {
+      "text": "how many inches of snow will there be",
+      "intent": "Weather.Conditions.GetFeature",
+      "entities": []
+    },
+    {
+      "text": "how much rain will fill",
+      "intent": "Weather.Conditions.GetFeature",
+      "entities": []
+    },
+    {
+      "text": "how much will it rain",
+      "intent": "Weather.Conditions.GetFeature",
+      "entities": []
+    },
+    {
+      "text": "how much will it snow",
+      "intent": "Weather.Conditions.GetFeature",
+      "entities": []
+    },
+    {
+      "text": "i want to know the temperature at death valley",
+      "intent": "Weather.GetForecast",
+      "entities": [
+        {
+          "entity": "Weather.Location",
+          "startPos": 34,
+          "endPos": 45
+        }
+      ]
+    },
+    {
+      "text": "is it going to snow today",
+      "intent": "Weather.Conditions.YesNo",
+      "entities": []
+    },
+    {
+      "text": "is it raining?",
+      "intent": "Weather.Conditions.YesNo",
+      "entities": []
+    },
+    {
+      "text": "is it snowing",
+      "intent": "Weather.Conditions.YesNo",
+      "entities": []
+    },
+    {
+      "text": "is there rain?",
+      "intent": "Weather.Conditions.YesNo",
+      "entities": []
+    },
+    {
+      "text": "provide me by toronto weather please",
+      "intent": "Weather.GetForecast",
+      "entities": [
+        {
+          "entity": "Weather.Location",
+          "startPos": 14,
+          "endPos": 20
+        }
+      ]
+    },
+    {
+      "text": "should i wear a raincoat today",
+      "intent": "Weather.Conditions.YesNo",
+      "entities": []
+    },
+    {
+      "text": "show me the forecast at alabama",
+      "intent": "Weather.GetForecast",
+      "entities": [
+        {
+          "entity": "Weather.Location",
+          "startPos": 24,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "soliciting today ' s weather",
+      "intent": "Weather.GetForecast",
+      "entities": []
+    },
+    {
+      "text": "what ' s the weather going to be like in hawaii ?",
+      "intent": "Weather.GetForecast",
+      "entities": [
+        {
+          "entity": "Weather.Location",
+          "startPos": 41,
+          "endPos": 46
+        }
+      ]
+    },
+    {
+      "text": "what is the high",
+      "intent": "Weather.Conditions.GetFeature",
+      "entities": []
+    },
+    {
+      "text": "what is the high temperature",
+      "intent": "Weather.Conditions.GetFeature",
+      "entities": []
+    },
+    {
+      "text": "what is the high today",
+      "intent": "Weather.Conditions.GetFeature",
+      "entities": []
+    },
+    {
+      "text": "what is the high tomorrow",
+      "intent": "Weather.Conditions.GetFeature",
+      "entities": []
+    },
+    {
+      "text": "what is the low",
+      "intent": "Weather.Conditions.GetFeature",
+      "entities": []
+    },
+    {
+      "text": "what is the low temperature",
+      "intent": "Weather.Conditions.GetFeature",
+      "entities": []
+    },
+    {
+      "text": "what is the low today",
+      "intent": "Weather.Conditions.GetFeature",
+      "entities": []
+    },
+    {
+      "text": "what is the temperature",
+      "intent": "Weather.Conditions.GetFeature",
+      "entities": []
+    },
+    {
+      "text": "what is the weather in redmond ?",
+      "intent": "Weather.GetForecast",
+      "entities": [
+        {
+          "entity": "Weather.Location",
+          "startPos": 23,
+          "endPos": 29
+        }
+      ]
+    },
+    {
+      "text": "what is the weather today at 10 day durham ?",
+      "intent": "Weather.GetForecast",
+      "entities": [
+        {
+          "entity": "Weather.Location",
+          "startPos": 36,
+          "endPos": 41
+        }
+      ]
+    },
+    {
+      "text": "what will the weather be tomorrow in accord new york ?",
+      "intent": "Weather.GetForecast",
+      "entities": [
+        {
+          "entity": "Weather.Location",
+          "startPos": 37,
+          "endPos": 51
+        }
+      ]
+    },
+    {
+      "text": "will it be cold today",
+      "intent": "Weather.Conditions.YesNo",
+      "entities": []
+    },
+    {
+      "text": "will it be cold tomorrow",
+      "intent": "Weather.Conditions.YesNo",
+      "entities": []
+    },
+    {
+      "text": "will it be hot today",
+      "intent": "Weather.Conditions.YesNo",
+      "entities": []
+    },
+    {
+      "text": "will it be hot tomorrow",
+      "intent": "Weather.Conditions.YesNo",
+      "entities": []
+    },
+    {
+      "text": "will it be raining in ranchi",
+      "intent": "Weather.GetForecast",
+      "entities": [
+        {
+          "entity": "Weather.Location",
+          "startPos": 22,
+          "endPos": 27
+        }
+      ]
+    },
+    {
+      "text": "will it rain this weekend",
+      "intent": "Weather.GetForecast",
+      "entities": []
+    },
+    {
+      "text": "will it rain today",
+      "intent": "Weather.Conditions.YesNo",
+      "entities": []
+    },
+    {
+      "text": "will it rain tomorrow?",
+      "intent": "Weather.Conditions.YesNo",
+      "entities": []
+    },
+    {
+      "text": "will it sleet today?",
+      "intent": "Weather.Conditions.YesNo",
+      "entities": []
+    },
+    {
+      "text": "will it snow this week?",
+      "intent": "Weather.Conditions.YesNo",
+      "entities": []
+    },
+    {
+      "text": "will it snow today",
+      "intent": "Weather.Conditions.YesNo",
+      "entities": []
+    }
+  ],
+  "settings": []
+}
