@@ -1,0 +1,12 @@
+# REPLACE THESE VALUES WITH YOUR OWN
+
+RESOURCE_GROUP=chstone-reliance
+LOCATION=eastus
+ACR=reliancemsft
+WEBAPP=weather-bot
+WEBAPP_PLAN=reliance-msft-linux
+IMAGE_NAME=weather-bot
+STORAGE=reliancemsft
+LUIS=reliance-msft
+MAPS=reliance-msft-maps
+BOT=chstone-weather-bot-2
