@@ -1,0 +1,12 @@
+# REPLACE THESE VALUES WITH YOUR OWN
+
+RESOURCE_GROUP=eawa-weather-bot-rg
+LOCATION=eastus
+ACR=weatheracr
+WEBAPP=weather-webapp
+WEBAPP_PLAN=weather-webapp-linux
+IMAGE_NAME=weather-bot
+STORAGE=weatherstg
+LUIS=weather-luis
+MAPS=weather-maps
+BOT=weather-bot
