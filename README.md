@@ -13,6 +13,18 @@ Optional (only needed to deploy your bot to the cloud):
 - [Azure](https://portal.azure.com) subscription
 - [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
 
+## Tutorials
+
+This repo contains four tutorials. With the exception of "hello world", all tutorials will be completed using TypeScript.
+
+1. **hello world**: A simple "echobot" that repeats messages to the user
+    - [Node.js](./tutorials/node/01-hello-world)
+    - [.NET Core](./tutorials/dotnet/01-hello-world)
+    - [Python](./tutorials/python/01-hello-world)
+1. [weather-luis](./tutorials/node/02-weather-luis): Build a LUIS weather model and integrate it with a simple stateless bot
+1. [weather-dialogs](./tutorial/node/03-weather-dialogs): Add dialogs and state to the bot
+1. [weather-complete](./tutorials/node/04-weather-complete): Add supporting geolocation and weather services to complete the bot
+
 ## Format  
 
 The tutorials in this repo will help you build progressively complex bots. You will start with a simple "hello world" bot to understand bot basics before adding more interesting components like:
@@ -22,18 +34,6 @@ The tutorials in this repo will help you build progressively complex bots. You w
 - Manage user and conversation state across turns
 - Control UX with bot dialogs
 - Call out to external APIs
-
-## Tutorials
-
-This repo contains four tutorials
-
-1. **hello world**: A simple "echobot" that repeats messages to the user
-    - [Node.js](./tutorials/node/01-hello-world)
-    - [.NET Core](./tutorials/dotnet/01-hello-world)
-    - [Python](./tutorials/python/01-hello-world)
-1. [weather](./tutorials/02-weather): Build a LUIS weather model and integrate it with a simple stateless bot
-1. [weather-state](./tutorials/03-weather-state): Add "memory" (state) to the bot
-1. [weather-dialogs](./tutorial/03-weather-dialogs): Add dialogs to the bot
 
 ## Contributing
 
