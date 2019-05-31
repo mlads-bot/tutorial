@@ -7,7 +7,7 @@ The following tools are required for your development environment:
 - [Visual Studio Code](https://code.visualstudio.com/) (any JavaScript editor will work, but VSCode is recommended)
 - [NodeJS](https://nodejs.org/en/) (LTS)
 - [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases)
-- Account on [luis.ai](https://luis.ai/)
+- __Authoring Key__ copied from [luis.ai](https://luis.ai/) (`Sign In` -> `Your Initials` (top right icon) -> `Settings` -> `Authoring Key`)
 
 Optional (only needed to deploy your bot to the cloud):
 - [Azure](https://portal.azure.com) subscription

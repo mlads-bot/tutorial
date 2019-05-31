@@ -20,7 +20,7 @@ npm install
 
 ### 2. Modify bot code
 
-Edit the file at __[src/bot.ts](./src/bot.)__ and insert the following code snippet where directed:
+Edit the file at __[src/bot.ts](./src/bot.ts)__ and insert the following code snippet where directed:
 
 ```typescript
 const { type } = context.activity;
