@@ -46,6 +46,8 @@ Every bot starts with `onTurn`, and the logic that follows dictates the flow of 
 
 The `onTurn` method returns a `Promise` object which means that the implementation completes _asyncronously_. In addition, the method is flagged with the `async` keyword, which means that any _additional_ operations inside the implementation that also complete asyncronously should include the `await` keyword. This includes `context.sendActivity` which is an IO operation that delivers a message to the user.
 
+> JavaScript's `Promise` and `async/await` constructs are similar to `Task` in C# and `asyncio` in Python.
+
 Failure to include the `await` keyword on `Promise`-returning operations is a frequent cause of bugs.
 
 > Advanced bots may choose to implement the [ActivityHandler](https://github.com/microsoft/botbuilder-js/blob/master/libraries/botbuilder-core/src/activityHandler.ts) class to take advantage of event-based activity handling.
