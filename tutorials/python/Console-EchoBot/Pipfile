@@ -1,0 +1,13 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+botbuilder-core = ">=4.0.0.a6"
+msrest = {git = "https://github.com/Azure/msrest-for-python.git"}
+
+[requires]
+python_version = "3.7"

@@ -1,0 +1,18 @@
+{
+    "name": "Echo-Connector-Bot",
+    "description": "",
+    "services": [
+        {
+            "type": "endpoint",
+            "appId": "",
+            "appPassword": "",
+            "endpoint": "http://localhost:3978",
+            "id": "8bc3c250-3c85-11e9-bf8a-d51908e6f400",
+            "name": "http://localhost:3978"
+        }
+    ],
+    "padlock": "",
+    "version": "2.0",
+    "overrides": null,
+    "path": "./Echo-Connector-Bot/EchoConnectorBot.bot"
+}
