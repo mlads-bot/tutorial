@@ -1,36 +1,77 @@
-# Hello World Bot Weather 2
+# Hello World - Node.js
 
-This is a simple bot with minimal dependencies, so you can get up and running quickly on Bot Framework. This shows you how to overwrite the `onTurn` method of the bot. This calls one of the other handlers, based on the type of activity received.
+This is a simple bot with minimal dependencies, so you can get up and running quickly on Bot Framework. You will learn about the `onTurn` method and how to override it to handle bot activities.
 
-## Prerequisites
+> Please ensure that you have completed the [prerequisites](../../README.md#prerequisites)
 
-- [Visual Studio Code](https://code.visualstudio.com/) (any JavaScript editor will work, but VSCode is preferred)
-- [NodeJS (LTS)](https://nodejs.org/en/)
-- [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases/tag/v4.2.1)
-- A git command line client and [GitHub](https://github.com/) account
+## What this bot does
+
+The bot simply echoes any text message back to the user.
 
 ## Get started
 
-1. Clone this repo and `cd` into this directory.
-1. `npm install`
-1. `npm start`
-1. Open the `Bot1b.bot` in the Bot Framework emulator
+### 1. Prepare dependencies
 
-## What the bot does
+Node.js projects are managed with the `npm` command line tool. Install the bot depdendencies now:
 
-The bot simply echoes your requests text, taking the name of the user from the bot channel and displaying the `text` value.
+```bash
+npm install
+```
 
-## Code structure
+### 2. Modify bot code
 
-- `index.ts`: Entry point to the bot web server. This is where the bot is instantiated and attached to the Express web server framework via a `BotFrameworkAdapter`.
-- `settings.ts`: Expose configuration parameters used by the bot. For simple scenarios, configuration is read from the OS environment variables, but more advanced options include [Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis) and [Azure App Configuration](https://docs.microsoft.com/en-us/azure/azure-app-configuration/overview).
-- `bot.ts`: contains the core logic of the bot, executed via the `onTurn` class function.
+Edit the file at __[src/bot.ts](./src/bot.)__ and insert the following code snippet where directed:
 
-> Subsequent tutorials will build on this structure, with an emphasis on a separation of concerns.
+```typescript
+const { type } = context.activity;
+switch (type) {
+  case ActivityTypes.ConversationUpdate:
+    for (const added of context.activity.membersAdded) {
+      const name = added.name || added.id;
+      await context.sendActivity(`${name} has joined the chat!`);
+    }
+    break;
 
-## FAQ
-- **Why are there two `conversationUpdate` messages shown when I start a new converation?**  
-  The bot registers a new `conversationUpdate` for each member who joins the conversation--in this case, you and the bot.  
-  
-- **Do I need a Microsoft App Id and Password?**  
-  These values are not needed when testing the bot locally in the emulator.
+  case ActivityTypes.Message:
+    const { name } = context.activity.from;
+    const { text } = context.activity;
+    await context.sendActivity(`${name} said "${text}"`);
+    break;
+}
+```
+
+This is a simple switch statement inside the `onTurn` method that branches on the incoming `ActivityType`. The bot replies to different activitie types in different ways.
+
+Every bot starts with `onTurn`, and the logic that follows dictates the flow of the bot.
+
+The `onTurn` method returns a `Promise` object which means that the implementation completes _asyncronously_. In addition, the method is flagged with the `async` keyword, which means that any _additional_ operations inside the implementation that also complete asyncronously should include the `await` keyword. This includes `context.sendActivity` which is an IO operation that delivers a message to the user.
+
+Failure to include the `await` keyword on `Promise`-returning operations is a frequent cause of bugs.
+
+> Advanced bots may choose to implement the [ActivityHandler](https://github.com/microsoft/botbuilder-js/blob/master/libraries/botbuilder-core/src/activityHandler.ts) class to take advantage of event-based activity handling.
+
+### 3. Build the bot
+
+Node.js projects may define custom scripts in their `package.json` file. Because this is a TypeScript project, we must define a build script. Inspect the `scripts` property in [package.json](./package.json) to see how this script is defined.
+
+```bash
+npm run build
+```
+
+After building the bot, you should now see a directory called `dist`. This directory contains a `.js` file for each of your `.ts` source files. TypeScript is not directly runable in Node.js, so we must _transpile_ into JavaScript.
+
+### 4. Run the bot
+
+Node.js reserves a few special script names that are common across all Node.js projects, including `start`. Reserved scripts can be executed without specifying `run`. Start your bot now:
+
+```bash
+npm start
+```
+
+You should now see that your bot is listening on the default port, `3978`.
+
+### 5. Connect to the bot
+
+Open the __Bot Framework Emulator__ and point it to the file called `01-Hello-World.bot`. This file contains the connection endpoint for your bot.
+
+You can now talk to your bot to see both greetings and message echos.
