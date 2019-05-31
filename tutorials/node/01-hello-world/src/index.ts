@@ -4,7 +4,7 @@
 import { BotFrameworkAdapter, TurnContext } from 'botbuilder';
 import * as express from 'express';
 
-import { Bot1b } from './bot';
+import { HelloWorldBot } from './bot';
 import { PORT } from './settings';
 
 const adapter = new BotFrameworkAdapter();
@@ -13,7 +13,7 @@ adapter.onTurnError = async (context: TurnContext, error) => {
     await context.sendActivity(`Oops, something went wrong! Check your bot's log`);
 };
 
-const bot = new Bot1b();
+const bot = new HelloWorldBot();
 
 express()
     .post('/api/messages', async (req, res, next) => {
