@@ -3,7 +3,7 @@
 
 import { ActivityTypes, Middleware, TurnContext } from 'botbuilder';
 
-export class HelloWorldBot implements Middleware {
+export class HelloWorldBot {
   async onTurn(context: TurnContext): Promise<void> {
 
     // New code goes here
