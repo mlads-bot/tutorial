@@ -22,7 +22,7 @@ This repo contains four tutorials. With the exception of "hello world", all tuto
     - [.NET Core](./tutorials/dotnet/01-hello-world)
     - [Python](./tutorials/python/01-hello-world)
 1. [weather-luis](./tutorials/node/02-weather-luis): Build a LUIS weather model and integrate it with a simple stateless bot
-1. [weather-dialogs](./tutorial/node/03-weather-dialogs): Add dialogs and state to the bot
+1. [weather-dialogs](./tutorials/node/03-weather-dialogs): Add dialogs and state to the bot
 1. [weather-complete](./tutorials/node/04-weather-complete): Add supporting geolocation and weather services to complete the bot
 
 ## Format  
