@@ -4,7 +4,7 @@
 import { ActivityTypes, Middleware, TurnContext } from 'botbuilder';
 import { LuisRecognizer } from 'botbuilder-ai';
 
-import { LUIS_SETTINGS } from './settings';
+import { LUIS_SETTINGS } from '../../02-weather-luis/src/settings';
 
 export class WeatherBot {
   private luis: LuisRecognizer;
@@ -16,7 +16,6 @@ export class WeatherBot {
       apps: { weatherAppId: applicationId },
     } = LUIS_SETTINGS;
     const endpoint = `https://${region}.api.cognitive.microsoft.com`;
-    console.log(LUIS_SETTINGS);
     this.luis = new LuisRecognizer({ applicationId, endpointKey, endpoint });
   }
 
@@ -41,8 +40,6 @@ export class WeatherBot {
   }
 
   private async onMessage(context: TurnContext) {
-
     // New code goes here
-
   }
 }

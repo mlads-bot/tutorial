@@ -1,5 +1,5 @@
 {
-    "name": "WeatherBot-With-Dialogs",
+    "name": "03 - Weather Dialogs",
     "description": "",
     "services": [
         {
@@ -13,6 +13,5 @@
     ],
     "padlock": "",
     "version": "2.0",
-    "overrides": null,
-    "path": "./skills/weather-with-dialogs/WeatherBot-With-Dialogs.bot"
+    "overrides": null
 }

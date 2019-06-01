@@ -1,5 +1,5 @@
 {
-  "name": "bot1",
+  "name": "mlads-bot-hello-world",
   "version": "1.0.0",
   "description": "Bot tutorial",
   "main": "dist/index.js",
