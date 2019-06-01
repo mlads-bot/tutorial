@@ -1,5 +1,5 @@
 {
-  "name": "bot-skills",
+  "name": "mlads-bot-weather-dialogs",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -28,7 +28,6 @@
     "@types/request-promise-native": "^1.0.15",
     "botbuilder": "^4.3.4",
     "botbuilder-ai": "^4.3.4",
-    "botbuilder-azure": "^4.3.4",
     "botbuilder-dialogs": "^4.3.4",
     "dark-sky": "^1.1.5",
     "express": "^4.16.4",
