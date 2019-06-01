@@ -3,14 +3,6 @@
 
 export const PORT = env('PORT', '3978');
 
-export const BLOB_SETTINGS = {
-  account: env('STORAGE_ACCOUNT'),
-  key: env('STORAGE_KEY'),
-  containers: {
-    state: 'botstate',
-  },
-};
-
 export const LUIS_SETTINGS = {
   key: env('LUIS_SUBSCRIPTION_KEY'),
   region: env('LUIS_SUBSCRIPTION_REGION'),
@@ -28,9 +20,7 @@ export const DARK_SKY_SETTINGS = {
 };
 
 export const BOT_SETTINGS = {
-  appId: env('MSA_APP_ID'),
-  appPassword: env('MSA_PASSWORD'),
-  directLineKey: env('DIRECT_LINE_KEY'),
+  directLineKey: env('DIRECT_LINE_KEY', ''),
 };
 
 export function env(name: string, defaultValue?: string) {

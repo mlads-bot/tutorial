@@ -6,11 +6,11 @@ import * as express from 'express';
 
 import { WeatherBot } from './bots/weather-bot';
 import { BotEventTextMiddleware } from './events';
-import { createAzureMap, createBlobStorage, createBotAdapter, createDarkSky, createWeatherRecognizer } from './services';
+import { createAzureMap, createBotAdapter, createDarkSky, createStorage, createWeatherRecognizer } from './services';
 import { BOT_SETTINGS, PORT } from './settings';
 import { generateToken } from './tokens';
 
-const storage = createBlobStorage();
+const storage = createStorage();
 const user = new UserState(storage);
 const conversation = new ConversationState(storage);
 const weatherRecognizer = createWeatherRecognizer();
