@@ -27,15 +27,15 @@ const { type } = context.activity;
 switch (type) {
   case ActivityTypes.ConversationUpdate:
     for (const added of context.activity.membersAdded) {
-      const name = added.name || added.id;
-      await context.sendActivity(`${name} has joined the chat!`);
+      const { name, id } = added;
+      await context.sendActivity(`${name || id} has joined the chat!`);
     }
     break;
 
   case ActivityTypes.Message:
-    const { name } = context.activity.from;
+    const { name, id } = context.activity.from;
     const { text } = context.activity;
-    await context.sendActivity(`${name} said "${text}"`);
+    await context.sendActivity(`${name || id} said "${text}"`);
     break;
 }
 ```
