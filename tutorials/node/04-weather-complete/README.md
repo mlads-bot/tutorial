@@ -44,7 +44,7 @@ MAP_KEY=<copy key from https://aka.ms/mlads-bot>
 
 Edit the file at [src/dialogs/weather.ts](./src/dialogs/weather.ts) and add the following code:
 
-__getLocation()__ (resolve a text location value to lat, lon coordinates)
+Add to the __getLocation__ method (resolve a text location value to lat, lon coordinates)
 
 ```typescript
 const { userInfo, map } = this.options;
@@ -87,7 +87,7 @@ if (user.location) {
 }
 ```
 
-__getWeatherContext()__ (the weather context defines all of the recognized attributes about the weather request: location, datetime, etc.)
+Add to the __getWeatherContext__ method (the weather context defines all of the recognized attributes about the weather request: location, datetime, etc.)
 
 ```typescript
 const { coordinates: [lat, lon], name, timezone } = location;
@@ -119,7 +119,7 @@ if (entities.$instance[WeatherEntity.datetime]) {
 }
 ```
 
-__haveUserLocation()__
+Add to the __haveUserLocation__ method (once we have resolved all of the weather request data, we can route the request to the correct dialog)
 
 ```typescript
 const { context } = step;
@@ -148,15 +148,14 @@ switch (intent) {
     break;
 }
 
-// If the dialog did not respond force the forecast dialog
+// If the dialog did not respond, route to the forecast dialog
 if (!context.responded) {
   await step.beginDialog(WeatherForecastDialog.dialogId, request);
 }
 ```
 
-Now add the following code to [src/weather-forecast.ts](./src/weather-forecast.ts)
+Now edit [src/weather-forecast.ts](./src/weather-forecast.ts) and add the following code to the __getForecastForTime__ method:
 
-__getForecastForTime__
 ```typescript
 // get hourly forecast for the requested weather context
 const { hourly, flags } = await getWeather(this.darkSky, weather, 'minutely', 'daily');
