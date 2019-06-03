@@ -18,6 +18,7 @@ export class WeatherForecastDialog extends Dialog<WeatherContext> {
   async beginDialog(dc: DialogContext, options?: WeatherContext): Promise<DialogTurnResult<any>> {
     const { dateType } = options;
     const { context } = dc;
+    console.log('begin WeatherForecastDialog');
     switch (dateType) {
       case 'date': // e.g. today, tomorrow, wednesday
         await this.getForecastForDate(context, options);
@@ -41,9 +42,7 @@ export class WeatherForecastDialog extends Dialog<WeatherContext> {
         await this.getForecastForCurrent(context, options);
         break;
     }
-
-    const status = DialogTurnStatus.complete;
-    return { status };
+    return await dc.endDialog();
   }
 
   private async getForecastForDate(context: TurnContext, weather: WeatherContext) {

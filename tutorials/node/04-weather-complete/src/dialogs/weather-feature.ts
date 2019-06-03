@@ -42,7 +42,6 @@ export class WeatherFeatureDialog extends Dialog<WeatherContext> {
       }
     }
 
-    const status = DialogTurnStatus.complete;
-    return { status };
+    return await dc.endDialog();
   }
 }

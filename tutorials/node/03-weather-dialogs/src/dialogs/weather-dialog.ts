@@ -2,8 +2,8 @@ import { StatePropertyAccessor } from 'botbuilder';
 import { LuisRecognizer } from 'botbuilder-ai';
 import { ComponentDialog, WaterfallDialog, WaterfallStepContext } from 'botbuilder-dialogs';
 
-import { OnBoardDialog } from './onboard-dialog';
 import { UserInfo } from '../bot';
+import { OnBoardDialog } from './onboard-dialog';
 
 interface AskWeatherResult {
   text: string;

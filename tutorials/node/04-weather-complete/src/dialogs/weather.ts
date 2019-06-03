@@ -5,6 +5,7 @@ import { LuisRecognizer } from 'botbuilder-ai';
 import { ComponentDialog, WaterfallDialog, WaterfallStepContext } from 'botbuilder-dialogs';
 import * as DarkSky from 'dark-sky';
 import * as moment from 'moment';
+import 'moment-timezone';
 
 import { UserInfo, UserLocation } from '../bot';
 import { AzureMap } from '../map';
@@ -46,7 +47,6 @@ export class WeatherDialog extends ComponentDialog {
       .addDialog(new WaterfallDialog(`${this.id}.main`, [
         this.begin.bind(this),
         this.haveUser.bind(this),
-        (step) => step.endDialog(),
       ]))
       .addDialog(new OnBoardDialog(userInfo))
       .addDialog(new WeatherForecastDialog(darkSky))
@@ -56,12 +56,11 @@ export class WeatherDialog extends ComponentDialog {
 
   private async begin(step: WaterfallStepContext) {
     const { userInfo } = this.options;
-
     const user = await userInfo.get(step.context);
+
     if (user) {
-      const { text } = step.context.activity;
-      const result: AskWeatherResult = { text };
-      return await step.next(result);
+      console.log('have user', step.result, user);
+      return await step.next();
     } else {
       return await step.beginDialog(OnBoardDialog.dialogId);
     }
@@ -69,6 +68,11 @@ export class WeatherDialog extends ComponentDialog {
 
   private async haveUser(step: WaterfallStepContext) {
     const { context } = step;
+
+    if (step.result && step.result.text) {
+      step.context.activity.text = step.result.text;
+    }
+
     const request = await this.getWeatherContext(context);
 
     if (request.coordinates) {
@@ -76,9 +80,12 @@ export class WeatherDialog extends ComponentDialog {
     } else {
       await this.requestUserLocation(context);
     }
+
+    return await step.endDialog();
   }
 
   private async haveUserLocation(step: WaterfallStepContext, request: WeatherContext) {
+    console.log('haveUserLocation');
     const { context } = step;
     const intent = LuisRecognizer.topIntent(request.recognized);
     switch (intent) {
@@ -143,8 +150,8 @@ export class WeatherDialog extends ComponentDialog {
   }
 
   private async getLocation(context: TurnContext, recognized: RecognizerResult): Promise<UserLocation> {
-    const query = this.getLocationEntity(recognized);
     const userInfo = await this.options.userInfo.get(context, {});
+    const query = this.getLocationEntity(recognized) || userInfo.locationText;
 
     if (query) {
       const resp = await this.options.map.searchAddress({ query });

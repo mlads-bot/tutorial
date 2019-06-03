@@ -21,6 +21,7 @@ export interface UserInfo {
   name?: string;
   text?: string;
   location?: UserLocation;
+  locationText?: string;
 }
 
 export interface UserLocation {

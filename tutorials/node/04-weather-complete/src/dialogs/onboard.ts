@@ -5,7 +5,7 @@ import { StatePropertyAccessor } from 'botbuilder';
 import { ComponentDialog, TextPrompt, WaterfallDialog, WaterfallStepContext } from 'botbuilder-dialogs';
 import { UserInfo } from '../bot';
 
-export interface UserPromptResult {
+export interface OnBoardResult {
   text: string;
 }
 
@@ -47,7 +47,7 @@ export class OnBoardDialog extends ComponentDialog {
 
   private async captureName(step: WaterfallStepContext) {
     const user = await this.userInfo.get(step.context, {});
-    user.name = step.result;
+    user.name = step.result as string;
     await this.userInfo.set(step.context, user);
     return await step.next();
   }
@@ -59,7 +59,7 @@ export class OnBoardDialog extends ComponentDialog {
 
   private async captureLocation(step: WaterfallStepContext) {
     const user = await this.userInfo.get(step.context);
-    user.location = step.result;
+    user.locationText = step.result as string;
     await this.userInfo.set(step.context, user);
     return await step.next();
   }
@@ -68,7 +68,7 @@ export class OnBoardDialog extends ComponentDialog {
     const user = await this.userInfo.get(step.context, {});
     const text = user.text;
     await step.context.sendActivity(`Ok, ${user.name}, I'll remember that you are located in ${user.location}. I think you were asking about _${user.text}..._`);
-    const result: UserPromptResult = { text };
+    const result: OnBoardResult = { text };
     return await step.endDialog(result);
   }
 
