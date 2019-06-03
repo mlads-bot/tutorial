@@ -3,7 +3,7 @@
 
 import { StatePropertyAccessor } from 'botbuilder';
 import { ComponentDialog, TextPrompt, WaterfallDialog, WaterfallStepContext } from 'botbuilder-dialogs';
-import { UserInfo, WeatherBotOptions } from '../../../04-weather-complete/src/bot';
+import { UserInfo } from '../bot';
 
 export interface UserPromptResult {
   text: string;
@@ -42,11 +42,14 @@ export class OnBoardDialog extends ComponentDialog {
   }
 
   private async promptName(step: WaterfallStepContext) {
-    // NEW CODE GOES HERE
+    return await step.prompt(this.textPromptId, 'It looks like this is your first time here. What should I call you?');
   }
 
   private async captureName(step: WaterfallStepContext) {
-    // NEW CODE GOES HERE
+    const user = await this.userInfo.get(step.context, {});
+    user.name = step.result;
+    await this.userInfo.set(step.context, user);
+    return await step.next();
   }
 
   private async promptLocation(step: WaterfallStepContext) {
