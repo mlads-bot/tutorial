@@ -29,11 +29,11 @@ export class WeatherDialog extends ComponentDialog {
   private async begin(step: WaterfallStepContext) {
     const user = await this.userInfo.get(step.context);
     if (user) {
-        const { text } = step.context.activity;
-        const result: AskWeatherResult = { text };
-        return await step.next(result);
+      const { text } = step.context.activity;
+      const result: AskWeatherResult = { text };
+      return await step.next(result);
     } else {
-        return await step.beginDialog(OnBoardDialog.dialogId);
+      return await step.beginDialog(OnBoardDialog.dialogId);
     }
   }
 

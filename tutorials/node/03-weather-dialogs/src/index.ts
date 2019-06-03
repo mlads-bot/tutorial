@@ -4,9 +4,9 @@
 import { AutoSaveStateMiddleware, BotFrameworkAdapter, ConversationState, UserState } from 'botbuilder';
 import * as express from 'express';
 
-import { WeatherBot } from './bot';
 import { createBotAdapter, createStorage, createWeatherRecognizer } from './services';
 import { PORT } from './settings';
+import { WeatherBot } from './bot';
 
 // BEGIN REPLACE
 const adapter: BotFrameworkAdapter = null;

@@ -1,9 +1,9 @@
-import { RecognizerResult, TurnContext } from "botbuilder";
-import DarkSky = require('dark-sky');
+import { TurnContext } from "botbuilder";
+import { Dialog, DialogContext, DialogTurnResult, DialogTurnStatus } from "botbuilder-dialogs";
+import * as DarkSky from 'dark-sky';
 
 import { WeatherCondition, WeatherEntity, WeatherPrecipitation } from "../types";
-import { getUnits } from "../weather-units";
-import { getWeather, WeatherContext } from "./context";
+import { getWeather, WeatherContext } from "../weather-context";
 
 const HOT_TEMP_F = 80;
 const COLD_TMEP_F = 40;
@@ -12,55 +12,40 @@ const WINDY_GUST_MPH = 40;
 const HUMIDIY_DEW_POINT_DEGREES = 3;
 const PRECIP_PROBABILITY = 0.2;
 
-export class WeatherConditionsBot {
+export class WeatherIsItDialog extends Dialog<WeatherContext> {
 
-  constructor(private darkSky: DarkSky) { }
+  static dialogId = WeatherIsItDialog.name;
 
-  async onTurnGetFeature(context: TurnContext, request: WeatherContext, recognized: RecognizerResult): Promise<void> {
-    const { resolvedLocation } = request;
-    const { daily, currently, flags } = await getWeather(this.darkSky, request, 'minutely', 'hourly');
-    const { entities } = recognized;
-    const conditions: WeatherCondition[][] = entities[WeatherEntity.condition] || [];
-    const [dayData] = daily.data;
-
-    if (conditions.length) {
-      const [[condition]] = conditions;
-      const tempUnits = getUnits('temperature', flags.units);
-
-      switch (condition) {
-        case WeatherCondition.high:
-          await context.sendActivity(`The high temperature today in ${resolvedLocation} is ${dayData.temperatureHigh} ${tempUnits}`);
-          break;
-
-        case WeatherCondition.low:
-          await context.sendActivity(`The low temperature today in ${resolvedLocation} is ${dayData.temperatureLow} ${tempUnits}`);
-          break;
-
-        case WeatherCondition.temperature:
-          await context.sendActivity(`The temperature in ${resolvedLocation} is ${currently.temperature} ${tempUnits}`);
-          break;
-
-        default:
-          throw new Error('Unknown condition: ' + condition);
-      }
-    }
+  constructor(private darkSky: DarkSky) {
+    super(WeatherIsItDialog.dialogId);
   }
 
-  async onTurnGetYesNo(context: TurnContext, request: WeatherContext, recognized: RecognizerResult): Promise<void> {
-    const { entities } = recognized;
+  async beginDialog(dc: DialogContext, options?: WeatherContext): Promise<DialogTurnResult<any>> {
+    console.log('begin WeatherIsItDialog');
+    const { context } = dc;
+    const { recognized: { entities } } = options;
+
     const conditions: WeatherCondition[][] = entities[WeatherEntity.condition] || [];
     const precipitations: WeatherPrecipitation[][] = entities[WeatherEntity.precipitation] || [];
 
+    console.dir(options.recognized, { depth: 10 });
+
     if (precipitations.length) {
       const [[precipitation]] = precipitations;
-      await this.getYesNoPrecip(context, request, precipitation);
+      await this.isItPrecip(context, options, precipitation);
     } else if (conditions.length) {
       const [[condition]] = conditions;
-      await this.getYesNoFeature(context, request, condition);
+      await this.isItFeature(context, options, condition);
+    } else {
+      await context.sendActivity(`Sorry, I don't understand`);
     }
+
+    console.log('ending dialog');
+
+    return await dc.endDialog();
   }
 
-  private async getYesNoPrecip(context: TurnContext, request: WeatherContext, precip: WeatherPrecipitation) {
+  private async isItPrecip(context: TurnContext, request: WeatherContext, precip: WeatherPrecipitation) {
     const { resolvedLocation } = request;
     const weather = await getWeather(this.darkSky, request, 'minutely', 'hourly', 'daily');
     const { precipType, precipIntensity, precipProbability } = weather.currently;
@@ -80,7 +65,7 @@ export class WeatherConditionsBot {
     }
   }
 
-  private async getYesNoFeature(context: TurnContext, request: WeatherContext, condition: WeatherCondition) {
+  private async isItFeature(context: TurnContext, request: WeatherContext, condition: WeatherCondition) {
     const { resolvedLocation } = request;
     const weather = await getWeather(this.darkSky, request, 'minutely', 'hourly');
     const [dayData] = weather.daily.data;

@@ -214,7 +214,6 @@ export class AzureMap {
   async getTimezoneByCoordinates(coordinates: [number, number], options?: TimezoneQuery, language?: string): Promise<TimezoneResponse> {
     const qs = Object.assign({ query: coordinates.join(',') }, options);
     const headers = { 'Accept-Language': language };
-    console.log(qs, headers);
     return await this.api.get('timezone/byCoordinates/json', { qs, headers });
   }
 }

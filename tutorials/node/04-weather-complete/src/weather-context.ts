@@ -1,9 +1,11 @@
+import { RecognizerResult } from 'botbuilder';
 import DarkSky = require('dark-sky');
 import * as moment from 'moment';
 
-import { DateTimeType } from "../types";
+import { DateTimeType } from "./types";
 
 export interface WeatherContext {
+  recognized?: RecognizerResult;
   coordinates?: [number, number];
   resolvedLocation?: string;
   requestedLocation?: string;
