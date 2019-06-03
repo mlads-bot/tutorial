@@ -4,7 +4,7 @@
 import { AutoSaveStateMiddleware, ConversationState, UserState } from 'botbuilder';
 import * as express from 'express';
 
-import { WeatherBot } from '../../04-weather-complete/src/bot';
+import { WeatherBot } from './bot';
 import { BotEventTextMiddleware } from './events';
 import { createAzureMap, createBotAdapter, createDarkSky, createStorage, createWeatherRecognizer } from './services';
 import { BOT_SETTINGS, PORT } from './settings';

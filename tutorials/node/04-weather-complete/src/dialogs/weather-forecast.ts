@@ -1,40 +1,49 @@
 import { TurnContext } from "botbuilder";
-import DarkSky = require('dark-sky');
+import { Dialog, DialogContext, DialogTurnResult, DialogTurnStatus } from "botbuilder-dialogs";
+import * as DarkSky from 'dark-sky';
 import { uniq } from "lodash";
 import * as moment from 'moment';
 
+import { findTime, findTimeRange, getWeather, WeatherContext } from "../weather-context";
 import { getUnits } from "../weather-units";
-import { findTime, findTimeRange, getWeather, WeatherContext } from "./context";
 
-export class WeatherForecastBot {
+export class WeatherForecastDialog extends Dialog<WeatherContext> {
 
-  constructor(private darkSky: DarkSky) { }
+  static dialogId = WeatherForecastDialog.name;
 
-  async onTurn(context: TurnContext, request: WeatherContext): Promise<void> {
-    const { dateType } = request;
+  constructor(private darkSky: DarkSky) {
+    super(WeatherForecastDialog.dialogId);
+  }
+
+  async beginDialog(dc: DialogContext, options?: WeatherContext): Promise<DialogTurnResult<any>> {
+    const { dateType } = options;
+    const { context } = dc;
     switch (dateType) {
       case 'date': // e.g. today, tomorrow, wednesday
-        await this.getForecastForDate(context, request);
+        await this.getForecastForDate(context, options);
         break;
 
       case 'time': // eg. at 10pm
       case 'datetime': // e.g. tomorrow at noon
-        await this.getForecastForTime(context, request);
+        await this.getForecastForTime(context, options);
         break;
 
       case 'daterange': // e.g. this week
-        await this.getForecastForDateRange(context, request);
+        await this.getForecastForDateRange(context, options);
         break;
 
       case 'timerange': // e.g. between 2:00 and 4:00
       case 'datetimerange': // e.g. this morning, tomorrow morning
-        await this.getForecastForTimeRange(context, request);
+        await this.getForecastForTimeRange(context, options);
         break;
 
       default: // current
-        await this.getForecastForCurrent(context, request);
+        await this.getForecastForCurrent(context, options);
         break;
     }
+
+    const status = DialogTurnStatus.complete;
+    return { status };
   }
 
   private async getForecastForDate(context: TurnContext, weather: WeatherContext) {

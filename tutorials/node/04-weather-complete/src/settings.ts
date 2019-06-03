@@ -7,7 +7,7 @@ export const LUIS_SETTINGS = {
   key: env('LUIS_SUBSCRIPTION_KEY'),
   region: env('LUIS_SUBSCRIPTION_REGION'),
   apps: {
-    weatherAppId: env('LUIS_APP_WEATHER_ID'),
+    weatherAppId: env('LUIS_APP_ID_WEATHER'),
   },
 };
 

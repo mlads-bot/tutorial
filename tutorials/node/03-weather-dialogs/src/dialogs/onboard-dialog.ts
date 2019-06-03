@@ -3,7 +3,7 @@
 
 import { StatePropertyAccessor } from 'botbuilder';
 import { ComponentDialog, TextPrompt, WaterfallDialog, WaterfallStepContext } from 'botbuilder-dialogs';
-import { UserInfo, WeatherBotOptions } from '../../../04-weather-complete/src/bot';
+import { UserInfo } from '../bot';
 
 export interface UserPromptResult {
   text: string;

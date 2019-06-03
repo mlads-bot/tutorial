@@ -2,8 +2,8 @@ import { StatePropertyAccessor } from 'botbuilder';
 import { LuisRecognizer } from 'botbuilder-ai';
 import { ComponentDialog, WaterfallDialog, WaterfallStepContext } from 'botbuilder-dialogs';
 
-import { UserInfo } from '../../../04-weather-complete/src/bot';
 import { OnBoardDialog } from './onboard-dialog';
+import { UserInfo } from '../bot';
 
 interface AskWeatherResult {
   text: string;
@@ -29,11 +29,11 @@ export class WeatherDialog extends ComponentDialog {
   private async begin(step: WaterfallStepContext) {
     const user = await this.userInfo.get(step.context);
     if (user) {
-        const { text } = step.context.activity;
-        const result: AskWeatherResult = { text };
-        return await step.next(result);
+      const { text } = step.context.activity;
+      const result: AskWeatherResult = { text };
+      return await step.next(result);
     } else {
-        return await step.beginDialog(OnBoardDialog.dialogId);
+      return await step.beginDialog(OnBoardDialog.dialogId);
     }
   }
 

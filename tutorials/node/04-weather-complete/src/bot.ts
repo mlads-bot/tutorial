@@ -6,7 +6,7 @@ import { LuisRecognizer } from 'botbuilder-ai';
 import { DialogSet } from 'botbuilder-dialogs';
 import * as DarkSky from 'dark-sky';
 
-import { WeatherDialog } from './dialogs/weather-dialog';
+import { WeatherDialog } from './dialogs/weather';
 import { AzureMap } from './map';
 
 export interface WeatherBotOptions {
@@ -40,7 +40,7 @@ export class WeatherBot extends ActivityHandler {
     const userInfo = new BotStatePropertyAccessor<UserInfo>(user, `${WeatherBot.name}.user`);
 
     this.dialogs = new DialogSet(conversation.createProperty(WeatherBot.name))
-      .add(new WeatherDialog({ recognizer, userInfo, darkSky, map }));
+      .add(new WeatherDialog({ conversation, recognizer, userInfo, darkSky, map }));
 
     this.onMembersAdded(async (context) => {
       for (const added of context.activity.membersAdded) {
