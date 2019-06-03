@@ -59,7 +59,6 @@ export class WeatherDialog extends ComponentDialog {
     const user = await userInfo.get(step.context);
 
     if (user) {
-      console.log('have user', step.result, user);
       return await step.next();
     } else {
       return await step.beginDialog(OnBoardDialog.dialogId);
@@ -85,30 +84,7 @@ export class WeatherDialog extends ComponentDialog {
   }
 
   private async haveUserLocation(step: WaterfallStepContext, request: WeatherContext) {
-    console.log('haveUserLocation');
-    const { context } = step;
-    const intent = LuisRecognizer.topIntent(request.recognized);
-    switch (intent) {
-      case WeatherIntent.getForecast:
-        await step.beginDialog(WeatherForecastDialog.dialogId, request);
-        break;
-
-      case WeatherIntent.getConditionsFeature:
-        await step.beginDialog(WeatherFeatureDialog.dialogId, request);
-        break;
-
-      case WeatherIntent.getConditionsYesNo:
-        await step.beginDialog(WeatherIsItDialog.dialogId, request);
-        break;
-
-      default:
-        await context.sendActivity(`Sorry, I don't understand '${intent}'`);
-        break;
-    }
-
-    if (!context.responded) {
-      await step.beginDialog(WeatherForecastDialog.dialogId, request);
-    }
+    // NEW CODE GOES HERE
   }
 
   private async getWeatherContext(context: TurnContext): Promise<WeatherContext> {
@@ -121,63 +97,15 @@ export class WeatherDialog extends ComponentDialog {
     weather.recognized = recognized;
 
     if (location) {
-      const { coordinates: [lat, lon], name, timezone } = location;
-      weather.locationType = location.type;
-      weather.coordinates = [lat, lon];
-      weather.requestedLocation = this.getLocationEntity(recognized);
-      weather.resolvedLocation = name;
-
-      if (entities.$instance[WeatherEntity.datetime]) {
-        const [{ text }] = entities.$instance[WeatherEntity.datetime] as [{ text: string }];
-        const [dateTime] = recognizeDateTime(text, Culture.English);
-        const [past, future] = dateTime.resolution.values as [DateTime, DateTime];
-        const { type, value, start, end, timex } = future || past;
-        const date = type === 'time' || type === 'timerange'
-          ? parseTime(value || start, timezone)
-          : moment.tz(value || start, timezone).toDate();
-        const label = new TimexProperty(timex).toNaturalLanguage(moment.tz(timezone).toDate());
-        weather.date = date;
-        weather.endDate = end
-          ? type === 'time' || type === 'timerange'
-            ? parseTime(end, timezone)
-            : moment.tz(end, timezone).toDate()
-          : null;
-        weather.dateLabel = label;
-        weather.dateType = type;
-      }
+      // NEW CODE GOES HERE
     }
     return weather;
   }
 
   private async getLocation(context: TurnContext, recognized: RecognizerResult): Promise<UserLocation> {
-    const userInfo = await this.options.userInfo.get(context, {});
-    const query = this.getLocationEntity(recognized) || userInfo.locationText;
+    // NEW CODE GOES HERE
 
-    if (query) {
-      const resp = await this.options.map.searchAddress({ query });
-      const top = resp.results.find((x) => {
-        return x.type === 'Point Address' || x.entityType === 'Municipality' || x.entityType === 'PostalCodeArea';
-      });
-      if (top) {
-        const { entityType, position: { lat, lon }, address: { freeformAddress } } = top;
-        const tz = await this.options.map.getTimezoneByCoordinates([lat, lon]);
-        const userLocation: UserLocation = {
-          coordinates: [lat, lon],
-          name: freeformAddress,
-          type: entityType,
-          timezone: tz.TimeZones[0].Id,
-        };
-        if (!userInfo.location) {
-          userInfo.location = userLocation;
-          await this.options.userInfo.set(context, userInfo);
-        }
-        return userLocation;
-      }
-    }
-
-    if (userInfo.location) {
-      return userInfo.location;
-    }
+    return null; // <- delete this line
   }
 
   private getLocationEntity(recognized: RecognizerResult) {

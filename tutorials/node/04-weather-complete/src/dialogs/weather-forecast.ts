@@ -18,7 +18,6 @@ export class WeatherForecastDialog extends Dialog<WeatherContext> {
   async beginDialog(dc: DialogContext, options?: WeatherContext): Promise<DialogTurnResult<any>> {
     const { dateType } = options;
     const { context } = dc;
-    console.log('begin WeatherForecastDialog');
     switch (dateType) {
       case 'date': // e.g. today, tomorrow, wednesday
         await this.getForecastForDate(context, options);
@@ -61,19 +60,7 @@ export class WeatherForecastDialog extends Dialog<WeatherContext> {
   }
 
   private async getForecastForTime(context: TurnContext, weather: WeatherContext) {
-    const { hourly, flags } = await getWeather(this.darkSky, weather, 'minutely', 'daily');
-    const { date, resolvedLocation } = weather;
-    const hour = findTime(date, 'hour', hourly.data);
-    if (hour) {
-      const dateText = moment(date).format('h a');
-      const { summary, temperature } = hour;
-      const units = getUnits('temperature', flags.units);
-      await context.sendActivity(`The weather in ${resolvedLocation} at ${dateText} will be ${summary} and ${temperature} ${units}`);
-    } else {
-      const dateText = moment(date).format('MMMM Do h a');
-      await context.sendActivity(`Sorry, my forecast does not include ${dateText}`);
-    }
-
+    // NEW CODE GOES HERE
   }
 
   private async getForecastForDateRange(context: TurnContext, weather: WeatherContext) {
