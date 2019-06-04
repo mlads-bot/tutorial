@@ -21,7 +21,7 @@ Examples:
 | Concept | Description |
 | ------- | ----------- |
 | Azure Maps | A Microsoft webservice with capabilities to search for place names and resolve their geographic coordinates (latitude, longitude) |
-| Dark Sky | A third party webservice that weather data for a given set of coordinates. |
+| Dark Sky | A third party webservice that returns weather data for a given set of coordinates. |
 | Time Zone | A standardized string (e.g. `America/Los_Angelas`) that represents how date and time should be normalized for a particular geo-political entity. Using [TZ identifiers](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) is necessary because a location's UTC offset may change over time due to daylight saving, etc. |
 | Date Entities | LUIS can resolve a number of different date/time forms, including relative, absolute, and ranges. |
 | Location Entities | LUIS can resolve location using either phrase context (the simple entity `Weather_Location`) or using prebuilt matching models (`geographyV2_city`, `_state`, `_country`, etc.) |
