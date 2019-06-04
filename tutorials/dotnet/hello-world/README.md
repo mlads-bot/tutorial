@@ -49,7 +49,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
 
-namespace Microsoft.BotBuilderSamples.Controllers
+namespace hello_world
 {
   [Route("api/messages")]
   [ApiController]
@@ -86,7 +86,7 @@ using System.Threading.Tasks;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Schema;
 
-namespace Microsoft.BotBuilderSamples.Bots
+namespace hello_world
 {
   public class EchoBot : ActivityHandler
   {
