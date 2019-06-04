@@ -26,6 +26,8 @@ The bot responds to text messages with the names of __intent__ and __entities__ 
 
 ### Bot Framework Concepts
 
+| Concept | Description |
+| ------- | ----------- |
 | LuisRecognizer | A utility class that can send queries to a published LUIS app. It must be configured before use |
 | .env file | A development-only file that hoists key/value pairs from the filesystem into the running app's environment variables |
 
