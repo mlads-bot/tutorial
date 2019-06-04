@@ -10,6 +10,8 @@ The bot simply echoes text message back to the user.
 
 ## Key Concepts
 
+| Concept | Description |
+| ------- | ----------- |
 | Bot | Application that responds to user text requests, or proactively sends messages |
 | Bot Adapter | Maps a bot to specific messaging protocol (e.g. http, console command line) |
 | Activity | Data structure in which messages are passed between client and bot (has information about user, text, attachments, etc.) |

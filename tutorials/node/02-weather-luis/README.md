@@ -12,6 +12,8 @@ The bot responds to text messages with the names of __intent__ and __entities__ 
 
 ### LUIS Concepts
 
+| Concept | Description |
+| ------- | ----------- |
 | LUIS | A Microsoft platform to train custom language understanding models |
 | ludown | A command line tool to migrate human-readable `.lu` LUIS model files into machine-readable `.json` files
 | luis-apis | A command line tool to programmatically manage your LUIS authoring workspace |
