@@ -22,7 +22,7 @@ dotnet remove package Microsoft.AspNetCore.Razor.Design
 dotnet add package Microsoft.Bot.Builder.Integration.AspNet.Core -v 4.4.3
 ```
 
-> As of this writing there is an issue with `4.4.4` so `4.4.3` is used here instead.
+> As of this writing there is an [issue](https://github.com/microsoft/botbuilder-dotnet/issues/1988) with `4.4.4` so `4.4.3` is used here instead.
 
 ### 4. Modify `Startup.cs`
 
