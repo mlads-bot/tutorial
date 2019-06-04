@@ -19,22 +19,32 @@ dotnet remove package Microsoft.AspNetCore.Razor.Design
 ### 3. Add BotBuilder Depdendencies
 
 ```bash
-dotnet add package Microsoft.Bot.Builder.Integration.AspNet.Core
+dotnet add package Microsoft.Bot.Builder.Integration.AspNet.Core -v 4.4.3
 ```
+
+> As of this writing there is an issue with `4.4.4` so `4.4.3` is used here instead.
 
 ### 4. Modify `Startup.cs`
 
 Edit the file at `Startups.cs` and add usings:
 
 ```csharp
+using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
 ```
 
 Then add dependency injections to `ConfigureServices` method:
 
 ```csharp
+services.AddMvc();
 services.AddSingleton<IBotFrameworkHttpAdapter, BotFrameworkHttpAdapter>();
 services.AddTransient<IBot, EchoBot>();
+```
+
+And enable MVC in the `Configure` method:
+
+```csharp
+app.UseMvc();
 ```
 
 ### 5. Create a Bot Controller
