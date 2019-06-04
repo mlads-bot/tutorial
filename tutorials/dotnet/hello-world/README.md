@@ -24,7 +24,7 @@ dotnet add package Microsoft.Bot.Builder.Integration.AspNet.Core
 
 ### 4. Modify `Startup.cs`
 
-Edit the file at [Startups.cs](./Startup.cs) and add usings:
+Edit the file at `Startups.cs` and add usings:
 
 ```csharp
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
@@ -37,11 +37,11 @@ services.AddSingleton<IBotFrameworkHttpAdapter, BotFrameworkHttpAdapter>();
 services.AddTransient<IBot, EchoBot>();
 ```
 
-### 5. Create BotController.cs
+### 5. Create a Bot Controller
 
 The bot controller routes HTTP requests to your bot's logic.
 
-Create a file at [Controllers/BotController.cs](./Controllers/BotController.cs) with the following content:
+Create a file at `Controllers/BotController.cs` with the following content:
 
 ```csharp
 using System.Threading.Tasks;
@@ -77,7 +77,7 @@ namespace Microsoft.BotBuilderSamples.Controllers
 
 ### 6. Create EchoBot.cs
 
-Create a file at [EchoBot.cs](./EchoBot.cs) with the following content:
+Create a file at `EchoBot.cs` with the following content:
 
 ```csharp
 using System.Collections.Generic;
