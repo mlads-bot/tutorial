@@ -2,7 +2,7 @@
 # Licensed under the MIT License.
 
 import asyncio
-from botbuilder.core import TurnContext, ConversationState, UserState, MemoryStorage
+from botbuilder.core import TurnContext, ConversationState, MemoryStorage
 from botbuilder.schema import ActivityTypes
 
 from adapter import ConsoleAdapter
