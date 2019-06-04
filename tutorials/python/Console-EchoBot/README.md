@@ -13,7 +13,7 @@ It uses `pipenv` or you can use your favorite virtual environment. You can also 
 
 ## To try this sample
 
-1. Install requirements:
+### 1. Install requirements:
 
 > Installing `pipenv` to create your virtual environment is optional but recommended to create an isolated environment
 
@@ -27,7 +27,7 @@ Or install the requirements directly on your global namespace:
 pip install -r requirements.txt
 ```
 
-2. Run the sample:
+### 2. Run the sample:
 
 If you have `pipenv` installed run (It will use the included pipfile):
 
