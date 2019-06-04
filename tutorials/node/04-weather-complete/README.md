@@ -54,10 +54,10 @@ const user = await userInfo.get(context, {});
 
 // find suitable location text from entities
 const utteranceLocation = this.getLocationEntity(recognized);
-const query = utteranceLocation || user.locationText;
 
 // resolve location query to [lat, lon]
-if (query && !user.location) {
+if (utteranceLocation || (user.locationText && !user.location)) {
+  const query = utteranceLocation || user.locationText;
   const resp = await map.searchAddress({ query });
   const top = resp.results.find((x) => {
     return x.type === 'Point Address' || x.entityType === 'Municipality' || x.entityType === 'PostalCodeArea';
