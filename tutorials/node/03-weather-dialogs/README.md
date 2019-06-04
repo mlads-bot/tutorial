@@ -2,7 +2,7 @@
 
 This bot adds dialogs (directed back-and-forth conversations) to the weather bot.
 
-> Please ensure that you have completed the [prerequisites](../../README.md#prerequisites)
+> ☑️ Please ensure that you have completed the [prerequisites](../../README.md#prerequisites)
 
 ## What this bot does
 
@@ -10,7 +10,7 @@ The bot asks the user where they are located and stores the value for later use
 
 ## Get started
 
-> Make sure you have published your LUIS model from the previous tutorial!
+> ☁️ Make sure you have published your LUIS model from the [previous tutorial](../02-weather-luis)!
 
 ### 1. Prepare dependencies
 

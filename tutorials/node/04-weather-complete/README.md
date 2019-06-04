@@ -2,7 +2,7 @@
 
 This bot adds complete end-to-end integration between language understanding, geolocation, and weather services to the weather bot.
 
-> Please ensure that you have completed the [prerequisites](../../README.md#prerequisites)
+> ☑️ Please ensure that you have completed the [prerequisites](../../README.md#prerequisites)
 
 ## What this bot does
 
@@ -18,7 +18,7 @@ Examples:
 
 ## Get started
 
-> Make sure you have published your LUIS model from the previous tutorial!
+> ☁️ Make sure you have published your LUIS model from the [previous tutorial](../02-weather-luis)!
 
 ### 1. Prepare dependencies
 

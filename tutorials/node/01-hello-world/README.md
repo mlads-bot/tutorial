@@ -2,11 +2,11 @@
 
 This is a simple bot with minimal dependencies, so you can get up and running quickly on Bot Framework. You will learn about the `onTurn` method and how to override it to handle bot activities.
 
-> Please ensure that you have completed the [prerequisites](../../README.md#prerequisites)
+> ☑️ Please ensure that you have completed the [prerequisites](../../README.md#prerequisites)
 
 ## What this bot does
 
-The bot simply echoes any text message back to the user.
+The bot simply echoes text message back to the user.
 
 ## Get started
 

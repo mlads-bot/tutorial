@@ -1,16 +1,16 @@
 # Weather Bot with LUIS - Node.js
 
-This bot introduces LUIS, a language understanding component, and integrates with the bot
+This bot introduces LUIS, a language understanding component, and integrates it with the bot
 
-> Please ensure that you have completed the [prerequisites](../../README.md#prerequisites)
+> ☑️ Please ensure that you have completed the [prerequisites](../../README.md#prerequisites)
 
 ## What this bot does
 
-The bot responds to text messages with the names of __intent__ and __entities__ as predicted by LUIS.
+The bot responds to text messages with the names of __intent__ and __entities__ predicted by a LUIS model.
 
 ## Get started
 
-> Make sure you have your __LUIS Authoring Key__ ready to copy/paste!
+> 🔑 Make sure you have your __[LUIS Authoring Key](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/luis-concept-keys#authoring-key)__ ready to copy/paste!
 
 ### 1. Prepare LUIS model
 
