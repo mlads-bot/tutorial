@@ -58,7 +58,7 @@ const utteranceLocation = this.getLocationEntity(recognized);
 const query = utteranceLocation || user.locationText;
 
 // resolve location query to [lat, lon]
-if (utteranceLocation) {
+if (query && !user.location) {
   const resp = await map.searchAddress({ query });
   const top = resp.results.find((x) => {
     return x.type === 'Point Address' || x.entityType === 'Municipality' || x.entityType === 'PostalCodeArea';
