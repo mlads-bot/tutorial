@@ -30,13 +30,14 @@ npm install
 
 Create a file, `.env`, as follows:
 
-> You should use the same `APP_ID` from the previous tutorial
+> You can copy your `.env` from the [previous tutorial](../02-weather-luis), but be sure to add values for `DARK_SKY_KEY` and `MAP_KEY`
 
 ```ini
 LUIS_SUBSCRIPTION_KEY=<copy key from https://aka.ms/mlads-bot>
 LUIS_SUBSCRIPTION_REGION=westus
 LUIS_APP_ID_WEATHER=YOUR_APP_ID
 LUIS_APP_ID_WEATHER=<copy key from https://aka.ms/mlads-bot>
+DARK_SKY_KEY=<copy key from https://aka.ms/mlads-bot>
 MAP_KEY=<copy key from https://aka.ms/mlads-bot>
 ```
 
