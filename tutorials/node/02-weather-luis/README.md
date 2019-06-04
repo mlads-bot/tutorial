@@ -8,6 +8,26 @@ This bot introduces LUIS, a language understanding component, and integrates it 
 
 The bot responds to text messages with the names of __intent__ and __entities__ predicted by a LUIS model.
 
+## Key Concepts
+
+### LUIS Concepts
+
+| LUIS | A Microsoft platform to train custom language understanding models |
+| ludown | A command line tool to migrate human-readable `.lu` LUIS model files into machine-readable `.json` files
+| luis-apis | A command line tool to programmatically manage your LUIS authoring workspace |
+| utterance | Something the user says to the bot |
+| intent | The user's intended action for a given utterance |
+| entities | All the typed things (nouns) mentioned by the user |
+| model lifecycle | The LUIS model lifecycle is `build` -> `train` -> `publish` |
+| app | A LUIS app represents a single model over all of its training and interation |
+| app version | A app may be versioned to segment a model over arbitrary interation boundaries |
+
+### Bot Framework Concepts
+
+| LuisRecognizer | A utility class that can send queries to a published LUIS app. It must be configured before use |
+| .env file | A development-only file that hoists key/value pairs from the filesystem into the running app's environment variables |
+
+
 ## Get started
 
 > 🔑 Make sure you have your __[LUIS Authoring Key](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/luis-concept-keys#authoring-key)__ ready to copy/paste!
