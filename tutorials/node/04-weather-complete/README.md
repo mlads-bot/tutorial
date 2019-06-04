@@ -36,7 +36,6 @@ Create a file, `.env`, as follows:
 LUIS_SUBSCRIPTION_KEY=<copy key from https://aka.ms/mlads-bot>
 LUIS_SUBSCRIPTION_REGION=westus
 LUIS_APP_ID_WEATHER=YOUR_APP_ID
-LUIS_APP_ID_WEATHER=<copy key from https://aka.ms/mlads-bot>
 DARK_SKY_KEY=<copy key from https://aka.ms/mlads-bot>
 MAP_KEY=<copy key from https://aka.ms/mlads-bot>
 ```
