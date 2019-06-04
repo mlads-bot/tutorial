@@ -1,2 +1,5 @@
-../../libraries/botbuilder-schema/
-../../libraries/botframework-connector/
+asyncio>=3.4.3
+botbuilder-core==4.0.0a6
+botbuilder-schema==4.4.0b1
+botframework-connector==4.4.0b1
+
