@@ -51,7 +51,7 @@ npx luis-apis train version --appId YOUR_APP_ID_FROM_PREVIOUS_STEP --versionId 0
 Now that your model is trained, you can publish it so that it can start serving queries:
 
 ```bash
-npx luis-apis publish version --appId YOUR_APP_ID --version 0.1 --authoringKey YOUR_AUTHORING_KEY
+npx luis-apis publish version --appId YOUR_APP_ID --versionId 0.1 --authoringKey YOUR_AUTHORING_KEY
 ```
 
 > You have now published to the `production` slot. As your operational needs evolve, you can explore publishing to the `staging` slot or by `version` (api [v3-preview](https://westus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0-preview/operations/5cb0a9459a1fe8fa44c28dd8) only).
