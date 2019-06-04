@@ -69,7 +69,7 @@ if (!context.responded) {
 }
 ```
 
-Finally, edit the file at [src/onboard-dialog.ts](./src/onboard-dialog.ts) and add the following code for the `promptName` and `captureName` methods:
+Finally, edit the file at [src/onboard-dialog.ts](./src/dialogs/onboard-dialog.ts) and add the following code for the `promptName` and `captureName` methods:
 
 __promptName()__
 
