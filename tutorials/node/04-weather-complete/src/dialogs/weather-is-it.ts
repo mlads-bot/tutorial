@@ -21,14 +21,11 @@ export class WeatherIsItDialog extends Dialog<WeatherContext> {
   }
 
   async beginDialog(dc: DialogContext, options?: WeatherContext): Promise<DialogTurnResult<any>> {
-    console.log('begin WeatherIsItDialog');
     const { context } = dc;
     const { recognized: { entities } } = options;
 
     const conditions: WeatherCondition[][] = entities[WeatherEntity.condition] || [];
     const precipitations: WeatherPrecipitation[][] = entities[WeatherEntity.precipitation] || [];
-
-    console.dir(options.recognized, { depth: 10 });
 
     if (precipitations.length) {
       const [[precipitation]] = precipitations;
@@ -39,8 +36,6 @@ export class WeatherIsItDialog extends Dialog<WeatherContext> {
     } else {
       await context.sendActivity(`Sorry, I don't understand`);
     }
-
-    console.log('ending dialog');
 
     return await dc.endDialog();
   }
