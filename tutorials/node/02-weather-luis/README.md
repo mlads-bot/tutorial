@@ -153,7 +153,7 @@ LUIS_APP_ID_WEATHER=YOUR_APP_ID
 
 ### 7. Modify Bot Code
 
-Edit the file at __[src/bot.ts](./src/bot.ts)__ and insert the following code snippet where directed:
+Edit the file at __[src/bot.ts](./src/bot.ts)__ and insert the following code in the `onMessage` method:
 
 ```typescript
 const recognized = await this.luis.recognize(context);

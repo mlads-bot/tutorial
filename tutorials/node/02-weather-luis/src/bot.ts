@@ -4,7 +4,7 @@
 import { ActivityTypes, Middleware, TurnContext } from 'botbuilder';
 import { LuisRecognizer } from 'botbuilder-ai';
 
-import { LUIS_SETTINGS } from '../../02-weather-luis/src/settings';
+import { LUIS_SETTINGS } from './settings';
 
 export class WeatherBot {
   private luis: LuisRecognizer;
