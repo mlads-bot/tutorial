@@ -8,6 +8,22 @@ This bot adds dialogs (directed back-and-forth conversations) to the weather bot
 
 The bot asks the user where they are located and stores the value for later use
 
+## Key Concepts
+
+| Concept | Description |
+| ------- | ----------- |
+| Dialog | A stateful request/response construct to manage the conversation with the user. Each dialog has a unique `dialogId` by which it can be addressed |
+| Waterfall Dialog | A set of steps that are execute in series across each turn of the conversation |
+| Prompt Dialog | A dialog that can ask the user for text or multiple choice, returning the result to a parent dialog |
+| Component Dialog | A dialog comprised of a set of child dialogs |
+| Bot Storage | The persistent memory of the bot, where we store state |
+| Middleware | A component that we add to our Bot Adapter that can peak at or even alter requests and/or response activities |
+| User State | A logical grouping of key/value pairs scoped to the lifespan of a unique user, stored in the Bot Storage mechanism |
+| Conversation State | A logical grouping of key/value pairs scoped to the lifespan of a conversation, stored in the Bot Storage mechanism |
+| Dialog Context | A wrapper around the standard `TurnContext` that maintains the dialog stack and exposes the API to affect the dialog state |
+| Waterfall Step | A wrapper around the standard `TurnContext` that exposes the waterfall API for a given turn |
+| State Property Accessor | A specific (named) property stored in one of the logical state scopes (user or conversation) |
+
 ## Get started
 
 > ☁️ Make sure you have published your LUIS model from the [previous tutorial](../02-weather-luis)!
