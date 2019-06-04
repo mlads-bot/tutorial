@@ -22,7 +22,7 @@ npm install
 
 Create a file, `.env`, as follows:
 
-> You should use the same `APP_ID` from the previous tutorial
+> You can copy your `.env` from the [previous tutorial](../02-weather-luis)
 
 ```ini
 LUIS_SUBSCRIPTION_KEY=<copy key from https://aka.ms/mlads-bot>
