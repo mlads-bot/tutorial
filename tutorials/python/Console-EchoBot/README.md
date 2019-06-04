@@ -6,7 +6,7 @@ It uses `pipenv` or you can use your favorite virtual environment. You can also 
 
 ## Pre-requisites
 
-1. Python 3.x
+1. Python 3.7
 2. Pip
 3. Python Virtual Environment, preferably `pipenv` (Optional)
 
@@ -17,11 +17,22 @@ It uses `pipenv` or you can use your favorite virtual environment. You can also 
 
 > Installing `pipenv` to create your virtual environment is optional but recommended to create an isolated environment
 
+#### a. Install the requirements in an isolated virtual environment (Recommended):
 ```bash
 pip install pipenv
-```
+```  
+Since the Python Botframework SDK is still in preview, we will lock our dependencies on the pre-release version and then install.  
 
-Or install the requirements directly on your global namespace:
+Lock dependencies to pre-release version and generate/update pipenv lock file `Pipfile.lock`.  
+```bash
+pipenv lock --pre
+```  
+then install all requirements  
+```bash
+pipenv install 
+```  
+
+#### b. Install the requirements directly on your global namespace:
 
 ```bash
 pip install -r requirements.txt
