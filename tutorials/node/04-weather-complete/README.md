@@ -155,7 +155,7 @@ if (!context.responded) {
 }
 ```
 
-Now edit [src/weather-forecast.ts](./src/weather-forecast.ts) and add the following code to the __getForecastForTime__ method:
+Now edit [src/dialogs/weather-forecast.ts](./src/dialogs/weather-forecast.ts) and add the following code to the __getForecastForTime__ method:
 
 ```typescript
 // get hourly forecast for the requested weather context
