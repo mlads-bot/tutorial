@@ -67,7 +67,7 @@ export class OnBoardDialog extends ComponentDialog {
   private async end(step: WaterfallStepContext) {
     const user = await this.userInfo.get(step.context, {});
     const text = user.text;
-    await step.context.sendActivity(`Ok, ${user.name}, I'll remember that you are located in ${user.location}. I think you were asking about _${user.text}..._`);
+    await step.context.sendActivity(`Ok, ${user.name}, I'll remember that you are located in ${user.locationText}. I think you were asking about _${user.text}..._`);
     const result: OnBoardResult = { text };
     return await step.endDialog(result);
   }
