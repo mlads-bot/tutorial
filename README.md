@@ -7,7 +7,8 @@ The following tools are required for your development environment:
 - [Visual Studio Code](https://code.visualstudio.com/) (any JavaScript editor will work, but VSCode is recommended)
 - [NodeJS](https://nodejs.org/en/) (LTS)
 - [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases)
-- __Authoring Key__ copied from [luis.ai](https://luis.ai/) (`Sign In` -> `Your Initials` (top right icon) -> `Settings` -> `Authoring Key`)
+- 🔑 __Authoring Key__ copied from [www.luis.ai](https://luis.ai/) (`Sign In` -> `Your Initials` (top right icon) -> `Settings` -> `Authoring Key`)
+- 🔑 __Subscription Keys__ copied from [this shared site](https://aka.ms/mlads-bot) (to simplify this tutorial, you will use keys for LUIS, Azure Maps, and Dark Sky, provided by us)
 
 Optional (only needed to deploy your bot to the cloud):
 - [Azure](https://portal.azure.com) subscription
@@ -17,10 +18,9 @@ Optional (only needed to deploy your bot to the cloud):
 
 This repo contains four tutorials. With the exception of "hello world", all tutorials will be completed using TypeScript.
 
-1. 🤖 **hello world**: A simple "echobot" that repeats messages to the user
-    - [Node.js](./tutorials/node/01-hello-world)
-    - [.NET Core](./tutorials/dotnet/hello-world) (optional)
-    - [Python](./tutorials/python/Echo-Connector-Bot) (optional)
+1. 🤖 [hello world](./tutorials/node/01-hello-world): A simple "echobot" that repeats messages to the user
+    - (optional) [.NET Core](./tutorials/dotnet/hello-world)
+    - (optional) [Python](./tutorials/python/Echo-Connector-Bot)
 1. 🤖 [weather-luis](./tutorials/node/02-weather-luis): Build a LUIS weather model and integrate it with a simple stateless bot
 1. 🤖 [weather-dialogs](./tutorials/node/03-weather-dialogs): Add dialogs and state to the bot
 1. 🤖 [weather-complete](./tutorials/node/04-weather-complete): Add supporting geolocation and weather services to complete the bot
