@@ -12,34 +12,28 @@ adapter = ConsoleAdapter()
 
 # Create MemoryStorage, UserState and ConversationState
 memory = MemoryStorage()
-# Commented out user_state because it's not being used.
-user_state = UserState(memory)
 conversation_state = ConversationState(memory)
 
-# Register both State middleware on the adapter.
-# Commented out user_state because it's not being used.
-adapter.use(user_state)
+# Register conversation state middleware on the adapter.
 adapter.use(conversation_state)
 
 
 async def logic(context: TurnContext):
     if context.activity.type == ActivityTypes.message:
         state = await conversation_state.get(context)
-        user = await user_state.get(context)
-        if user:
-            await context.send_activity(f'Hello {user}. Welcome back!')
-        else:
-            user.name = context.text 
 
         # If our conversation_state already has the 'count' attribute, increment state.count by 1
         # Otherwise, initialize state.count with a value of 1
-        if hasattr(state, 'count'):
+        if hasattr(state, "count"):
             state.count += 1
         else:
             state.count = 1
-        await context.send_activity(f'{state.count}: You said "{context.activity.text}"')
+        await context.send_activity(
+            f'Conversation count is {state.count} and you said "{context.activity.text}"'
+        )
     else:
-        await context.send_activity(f'[{context.activity.type} event detected]')
+        await context.send_activity(f"[{context.activity.type} event detected]")
+
 
 loop = asyncio.get_event_loop()
 
