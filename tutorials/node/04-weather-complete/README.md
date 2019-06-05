@@ -206,6 +206,12 @@ You can now talk to your bot to ask about the weather.
 
 > __TROUBLESHOOTING__ If you see a message `The key used is invalid, malformed, empty, or doesn't match the region`, double check that your LUIS app is set to `public`. You can also use the GUI at [luis.ai](https://luis.ai) (`manage` -> `application information` -> `Make this app public`)
 
+## (Optional) Evaluate your Model
+
+Now is a good time to revist your LUIS model and evaluate it for accuracy and potential ambiguous predicitons.
+
+Please follow the guide for [evaluating LUIS models with dispatch](../../../assets/luis-dispatch-eval.md)
+
 ## (Optional) Deploy to Azure
 
 Now that your bot is running locally, you can deploy it to an Azure Web App and connect to one of the Bot Framework Channels

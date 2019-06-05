@@ -2,6 +2,8 @@
 
 ## Get Started
 
+> You can run these commands from any directory, but because the commands will produce output files, you should run them from one of the previous node tutorial folders to take advantage of `.gitignore` and prevent accidental commits
+
 ### 1. Initialize the LUIS dispatch tool
 
 ```bash

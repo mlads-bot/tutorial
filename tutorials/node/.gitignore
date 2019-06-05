@@ -4,3 +4,4 @@ dist
 .env
 .luisrc
 mlads-weather.json
+*/dispatch
