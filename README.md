@@ -33,7 +33,28 @@ The tutorials in this repo will help you build progressively complex bots. You w
 - Interpret LUIS intent and entities in your bot
 - Manage user and conversation state across turns
 - Control UX with bot dialogs
-- Call out to external APIs
+- Call out to external APIs  
+
+## Authors  
+💻 The tutorials in this repository were developed by the following members of the Azure Artificial Intelligence (AI) CAT Team:  
+
+| Contributor | Email |
+| ------ | :--------: | 
+| 1. Emmanuel Awa - Software Engineer | [emmanuel.awa@microsoft.com](mailto:emmanuel.awa@microsoft.com) |
+| 2. Chris Stone - Senior Software Engineer | [christopher.stone@microsoft.com](mailto:christopher.stone@microsoft.com)  |
+| 3. Dipanjan Banik - Senior PM Lead | [dipanjan.banik@microsoft.com](mailto:dipanjan.banik@microsoft.com)  |
+| 4. Sharat Chikkerur - Principal Data Science Lead | [sharat.chikkerur@microsoft.com](mailto:sharat.chikkerur@microsoft.com) |
+
+
+## Resources  
+1. [Microsoft Botframework - Full Landscape](https://github.com/Microsoft/botframework#readme)    
+1. [Microsoft Botframework Solutions - Virtual Assistant Templates](https://github.com/microsoft/botframework-solutions)  
+1. [Azure Bot Service](https://azure.microsoft.com/en-us/services/bot-service/)  
+1. [Azure Botframework Documentation](https://dev.botframework.com/)  
+1. [Azure Botframework GitHub](https://github.com/microsoft/botframework)  
+1. [Botbuilder Samples](https://github.com/microsoft/BotBuilder-Samples)  
+1. [Botbuilder SDK](https://github.com/microsoft/botframework-sdk)  
+
 
 ## Contributing
 
