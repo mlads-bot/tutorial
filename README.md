@@ -36,7 +36,7 @@ The tutorials in this repo will help you build progressively complex bots. You w
 - Call out to external APIs  
 
 ## Authors  
-The tutorials in this repository were developed by the following members of the Azure Artificial Intelligence (AI) CAT Team:  
+💻 The tutorials in this repository were developed by the following members of the Azure Artificial Intelligence (AI) CAT Team:  
 
 | Contributor | Email |
 | ------ | :--------: | 
