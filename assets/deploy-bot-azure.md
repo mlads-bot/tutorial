@@ -22,6 +22,26 @@ LUIS_APP_ID_WEATHER=<copy from .env>
 PW=$(cat /proc/sys/kernel/random/uuid)
 ```
 
+> Copy keys from the previous tutorial or from https://aka.ms/mlads-bot
+
+Make sure the correct subscription is selected:
+
+```bash
+az account show
+```
+
+If you don't see the right subscription name, query your available subscriptions:
+
+```bash
+az account list --query '[].[name, id]'
+```
+
+And then set the active subscription
+
+```bash
+az account set -s YOUR_SUBSCRIPTION_ID
+```
+
 ### 1. Create a Resource Group
 
 ```bash
