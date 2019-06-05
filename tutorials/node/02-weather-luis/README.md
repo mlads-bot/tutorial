@@ -214,6 +214,10 @@ npm run start-dev
 
 Open the __Bot Framework Emulator__ and point it to the file called `02-Weather-LUIS.bot`. This file contains the connection endpoint for your bot.
 
-You can now talk to your bot to see greetings and intents + entities.
+You can now talk to your bot to see greetings and intents + entities. Try to ask simple weather-related questions like:
+
+```bash
+"What is the weather in Boston tomorrow"
+```
 
 > __TROUBLESHOOTING__ If you see a message `The key used is invalid, malformed, empty, or doesn't match the region`, double check that your LUIS app is set to `public`. You can also use the GUI at [luis.ai](https://luis.ai) (`manage` -> `application information` -> `Make this app public`)
