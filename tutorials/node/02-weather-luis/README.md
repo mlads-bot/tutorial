@@ -15,6 +15,8 @@ The bot responds to text messages with the names of __intent__ and __entities__ 
 | Concept | Description |
 | ------- | ----------- |
 | LUIS | A Microsoft platform to train custom language understanding models |
+| author key | A management key for your account that can make changes and predictions. __predictions__ made using the __authoring key__ are free, but have a monthly quota |
+| subscription key | A billing resource used to make predicition queries (read-only) |
 | ludown | A command line tool to migrate human-readable `.lu` LUIS model files into machine-readable `.json` files
 | luis-apis | A command line tool to programmatically manage your LUIS authoring workspace |
 | utterance | Something the user says to the bot |
