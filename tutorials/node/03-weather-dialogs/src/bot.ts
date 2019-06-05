@@ -59,6 +59,15 @@ export class WeatherBot {
   }
 
   private async onMessage(context: TurnContext) {
-    // NEW CODE GOES HERE
+    // A dialog context is created at the start of the turn to help us manage our DialogSet for the current state of the conversation
+    const dc = await this.dialogs.createContext(context);
+
+    // Instruct the dialog context to resume any dialogs that are expecting a user response (e.g. a text prompt)
+    await dc.continueDialog();
+
+    // If none of our dialogs gave a response it means that this is a cold start request and we should begin a new "weather" dialog
+    if (!context.responded) {
+      await dc.beginDialog(WeatherDialog.dialogId);
+    }
   }
 }

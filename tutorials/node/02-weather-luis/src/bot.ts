@@ -40,6 +40,11 @@ export class WeatherBot {
   }
 
   private async onMessage(context: TurnContext) {
-    // New code goes here
+    const recognized = await this.luis.recognize(context);
+    const intent = LuisRecognizer.topIntent(recognized);
+    const { entities } = recognized;
+
+    await context.sendActivity(`I understand you want to know about __${intent}__.`);
+    await context.sendActivity(`I also found the following entities: ${JSON.stringify(entities)}`);
   }
 }

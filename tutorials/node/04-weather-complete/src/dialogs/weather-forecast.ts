@@ -60,7 +60,23 @@ export class WeatherForecastDialog extends Dialog<WeatherContext> {
   }
 
   private async getForecastForTime(context: TurnContext, weather: WeatherContext) {
-    // NEW CODE GOES HERE
+    // get hourly forecast for the requested weather context
+    const { hourly, flags } = await getWeather(this.darkSky, weather, 'minutely', 'daily');
+    const { date, resolvedLocation } = weather;
+
+    // extract data for just the requested time
+    const hour = findTime(date, 'hour', hourly.data);
+    if (hour) {
+
+      // format a detailed response
+      const dateText = moment(date).format('h a');
+      const { summary, temperature } = hour;
+      const units = getUnits('temperature', flags.units);
+      await context.sendActivity(`The weather in ${resolvedLocation} at ${dateText} will be ${summary} and ${temperature} ${units}`);
+    } else {
+      const dateText = moment(date).format('MMMM Do h a');
+      await context.sendActivity(`Sorry, my forecast does not include ${dateText}`);
+    }
   }
 
   private async getForecastForDateRange(context: TurnContext, weather: WeatherContext) {

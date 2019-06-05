@@ -84,7 +84,36 @@ export class WeatherDialog extends ComponentDialog {
   }
 
   private async haveUserLocation(step: WaterfallStepContext, request: WeatherContext) {
-    // NEW CODE GOES HERE
+    const { context } = step;
+    const intent = LuisRecognizer.topIntent(request.recognized);
+
+    // map intent to the correct dialog handler
+    switch (intent) {
+
+      // E.g. "what is the weather tomorrow?"
+      case WeatherIntent.getForecast:
+        await step.beginDialog(WeatherForecastDialog.dialogId, request);
+        break;
+
+      // E.g. "what is the high temperature?"
+      case WeatherIntent.getConditionsFeature:
+        await step.beginDialog(WeatherFeatureDialog.dialogId, request);
+        break;
+
+      // E.g. "will it rain today?"
+      case WeatherIntent.getConditionsYesNo:
+        await step.beginDialog(WeatherIsItDialog.dialogId, request);
+        break;
+
+      default:
+        await context.sendActivity(`Sorry, I don't understand '${intent}'`);
+        break;
+    }
+
+    // If the dialog did not respond, route to the forecast dialog
+    if (!context.responded) {
+      await step.beginDialog(WeatherForecastDialog.dialogId, request);
+    }
   }
 
   private async getWeatherContext(context: TurnContext): Promise<WeatherContext> {
@@ -97,15 +126,76 @@ export class WeatherDialog extends ComponentDialog {
     weather.recognized = recognized;
 
     if (location) {
-      // NEW CODE GOES HERE
+      const { coordinates: [lat, lon], name, timezone } = location;
+      weather.locationType = location.type;
+      weather.coordinates = [lat, lon];
+      weather.requestedLocation = this.getLocationEntity(recognized);
+      weather.resolvedLocation = name;
+
+      // datetime parsing is complex. the bot should handle ranges, dates, times, past, and future values
+      if (entities.$instance[WeatherEntity.datetime]) {
+        const [{ text }] = entities.$instance[WeatherEntity.datetime] as [{ text: string }];
+        const [dateTime] = recognizeDateTime(text, Culture.English);
+        const [past, future] = dateTime.resolution.values as [DateTime, DateTime];
+        const { type, value, start, end, timex } = future || past;
+
+        // special consideration must be given to the user's timezone
+        const date = type === 'time' || type === 'timerange'
+          ? parseTime(value || start, timezone)
+          : moment.tz(value || start, timezone).toDate();
+        const label = new TimexProperty(timex).toNaturalLanguage(moment.tz(timezone).toDate());
+        weather.date = date;
+        weather.endDate = end
+          ? type === 'time' || type === 'timerange'
+            ? parseTime(end, timezone)
+            : moment.tz(end, timezone).toDate()
+          : null;
+        weather.dateLabel = label;
+        weather.dateType = type;
+      }
     }
     return weather;
   }
 
   private async getLocation(context: TurnContext, recognized: RecognizerResult): Promise<UserLocation> {
-    // NEW CODE GOES HERE
+    const { userInfo, map } = this.options;
 
-    return null; // <- delete this line
+    // read user's location from stored onboarding data in case no location information was found in the utterance
+    const user = await userInfo.get(context, {});
+
+    // find suitable location text from entities
+    const utteranceLocation = this.getLocationEntity(recognized);
+
+    // resolve location query to [lat, lon]
+    if (utteranceLocation || (user.locationText && !user.location)) {
+      const query = utteranceLocation || user.locationText;
+      const resp = await map.searchAddress({ query });
+      const top = resp.results.find((x) => {
+        return x.type === 'Point Address' || x.entityType === 'Municipality' || x.entityType === 'PostalCodeArea';
+      });
+      if (top) {
+        const { entityType, position: { lat, lon }, address: { freeformAddress } } = top;
+        const tz = await map.getTimezoneByCoordinates([lat, lon]);
+        const userLocation: UserLocation = {
+          coordinates: [lat, lon],
+          name: freeformAddress,
+          type: entityType,
+          timezone: tz.TimeZones[0].Id,
+        };
+
+        // store location as default user location
+        if (!user.location) {
+          user.location = userLocation;
+          await userInfo.set(context, user);
+        }
+        return userLocation;
+      }
+    }
+
+    // try to use stored user location
+    if (user.location) {
+      return user.location;
+    }
   }
 
   private getLocationEntity(recognized: RecognizerResult) {

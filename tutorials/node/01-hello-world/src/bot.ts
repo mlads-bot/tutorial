@@ -6,7 +6,21 @@ import { ActivityTypes, Middleware, TurnContext } from 'botbuilder';
 export class HelloWorldBot {
   async onTurn(context: TurnContext): Promise<void> {
 
-    // New code goes here
+    const { type } = context.activity;
+    switch (type) {
+      case ActivityTypes.ConversationUpdate:
+        for (const added of context.activity.membersAdded) {
+          const { name, id } = added;
+          await context.sendActivity(`${name || id} has joined the chat!`);
+        }
+        break;
+
+      case ActivityTypes.Message:
+        const { name, id } = context.activity.from;
+        const { text } = context.activity;
+        await context.sendActivity(`${name || id} said "${text}"`);
+        break;
+    }
 
   }
 }

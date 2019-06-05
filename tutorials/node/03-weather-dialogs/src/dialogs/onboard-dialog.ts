@@ -42,11 +42,22 @@ export class OnBoardDialog extends ComponentDialog {
   }
 
   private async promptName(step: WaterfallStepContext) {
-    // NEW CODE GOES HERE
+    // A prompt is a special kind of dialog that expects user input. Prompts are commonly used in WaterfallDialogs, as seen here
+    return await step.prompt(this.textPromptId, 'It looks like this is your first time here. What should I call you?');
   }
 
   private async captureName(step: WaterfallStepContext) {
-    // NEW CODE GOES HERE
+    // Read the `user` object from the state property accesor (if the property does not exist, we use the default value `{}`)
+    const user = await this.userInfo.get(step.context, {});
+
+    // Assign the value from the previous text prompt to the user name
+    user.name = step.result;
+
+    // Store the updated `user` state object to the store
+    await this.userInfo.set(step.context, user);
+
+    // Pass control to the next step in the waterfall array
+    return await step.next();
   }
 
   private async promptLocation(step: WaterfallStepContext) {
