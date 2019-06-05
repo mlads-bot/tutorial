@@ -58,6 +58,15 @@ az acr create -g $RG -n $ACR --sku Standard --admin-enabled
 
 > These commands must be run from the directory containing `package.json` of the bot you want to build
 
+If you are executing these commands from __Azure Cloud Shell__ you will need to bring the sources to that environment:
+
+```bash
+git clone https://github.com/mlads-bot/tutorial.git
+cd tutorial/tutorials/node/04-weather-complete
+npm install
+```
+
+
 ```bash
 npm run build
 az acr build -g $RG -r $ACR -t my-weather-bot:latest .
