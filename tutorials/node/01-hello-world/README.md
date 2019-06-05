@@ -22,6 +22,20 @@ The bot simply echoes text message back to the user.
 
 ## Get started
 
+### 0. Prepare environment
+
+Clone this repo with git:
+
+```bash
+git clone https://github.com/mlads-bot/tutorial.git
+```
+
+Open a command prompt and `cd tutorial/node/01-hello-world`
+
+Finally open `VSCode` and open `01-hello-world` (File->Open Folder).
+
+> You should change your `VSCode` and `console` active directory as you move between the tutorials.
+
 ### 1. Prepare dependencies
 
 Node.js projects are managed with the `npm` command line tool. Install the bot depdendencies now:
