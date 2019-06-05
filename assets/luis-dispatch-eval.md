@@ -12,7 +12,7 @@ npx botdispatch init --dataFolder dispatch
 
 You will be asked to provide 3 values:
 
-1. `Name`: Choose an unique name, relative to your other LUIS apps, like `WeatherDispatch`
+1. `Name`: Choose a unique name, relative to your other LUIS apps, like `WeatherDispatch`
 2. `Authoring Key`: Use the same authoring key you used in the previous tutorials
 3. `Authoring Region`: Choose the region closest to you
 
