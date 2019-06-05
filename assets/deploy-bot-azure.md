@@ -89,7 +89,7 @@ az webapp create -g $RG -p $WEB_PLAN -n $BOT --runtime 'node|10.14'
 Your bot registration requires a Microsoft Account, which will be used to authenticate your bot with the Bot Service:
 
 ```bash
-MSA=$(az ad app create --display-name $BOT --password $PW --available-to-other-tenants --query appId -o tsv)
+MSA=$(az ad app create --display-name $BOT --password $PW --available-to-other-tenants --query appId -o tsv --identifier-uris https://github.com/mlads-bot/tutorial/)
 az bot create --appid $MSA -k registration -n $BOT -p $PW -g $RG -e https://$BOT.azurewebsites.net/api/messages
 ```
 
