@@ -38,6 +38,8 @@ The bot responds to text messages with the names of __intent__ and __entities__ 
 
 > 🔑 Make sure you have your __[LUIS Authoring Key](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/luis-concept-keys#authoring-key)__ ready to copy/paste!
 
+> Make sure your __working directory__ in `VSCode` and your `console` are both set to `tutorials/node/02-weather-luis`!
+
 ### 1. Prepare LUIS model
 
 A preconfigured LUIS model is available at [weather.lu](./data/weather.lu). The `.lu` format is a human readable LUIS format that allows us to easily define new utterances and labels, however, it must be converted to `.json` before we can use it. Convert it to JSON now:
