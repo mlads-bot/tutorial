@@ -19,7 +19,7 @@ LUIS=my-luis
 MAPS=my-maps
 DARK_SKY_KEY=<copy from .env>
 LUIS_APP_ID_WEATHER=<copy from .env>
-PW=$(cat /proc/sys/kernel/random/uuid)
+PW=$(cat /proc/sys/kernel/random/uuid) # Use 'uuidgen | tr "[:upper:]" "[:lower:]"' if you're on MAC
 ```
 
 > Copy keys from the previous tutorial or from https://aka.ms/mlads-bot
