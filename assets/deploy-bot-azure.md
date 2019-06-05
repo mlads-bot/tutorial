@@ -82,7 +82,7 @@ LUIS_KEY=$(az cognitiveservices account keys list -g $RG -n $LUIS -o tsv --query
 MAP_KEY=$(az maps account keys list -g $RG -n $MAPS -o tsv --query primaryKey)
 DIRECT_LINE_KEY=$(az bot directline show -rg $RG -n $BOT --with-secrets --query properties.properties.sites[0].key -o tsv)
 
-az webapp config appsettings set -g $RG -n $BOT --settings LUIS_SUBSCRIPTION_KEY=$LUIS_KEY LUIS_SUBSCRIPTION_REGION=$LUIS_LOCATION LUIS_APP_ID_MUSIC=$LUIS_APP_ID MSA_APP_ID=$MSA MSA_PASSWORD=$PW MAP_KEY=$MAP_KEY DARK_SKY_KEY=$DARK_SKY_key DIRECT_LINE_KEY=$DIRECT_LINE_KEY
+az webapp config appsettings set -g $RG -n $BOT --settings LUIS_SUBSCRIPTION_KEY=$LUIS_KEY LUIS_SUBSCRIPTION_REGION=$LUIS_LOCATION LUIS_APP_ID_WEATHER=$LUIS_APP_ID MSA_APP_ID=$MSA MSA_PASSWORD=$PW MAP_KEY=$MAP_KEY DARK_SKY_KEY=$DARK_SKY_key DIRECT_LINE_KEY=$DIRECT_LINE_KEY
 
 az webapp config container set g $RG --name $BOT --docker-custom-image-name $ACR.azurecr.io/my-weather-bot:latest --docker-registry-server-password $ACR_KEY --docker-registry-server-url https://$ACR.azurecr.io --docker-registry-server-user $ACR
 ```

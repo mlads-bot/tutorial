@@ -7,16 +7,18 @@ import DarkSky = require('dark-sky');
 
 import { AzureMap } from './map';
 import {
+  BOT_SETTINGS,
   DARK_SKY_SETTINGS,
   LUIS_SETTINGS,
-  MAP_SETTINGS } from './settings';
+  MAP_SETTINGS,
+} from './settings';
 
 export function createStorage() {
   return new MemoryStorage();
 }
 
 export function createWeatherRecognizer() {
-  const { key, region, apps: { weatherAppId} } = LUIS_SETTINGS;
+  const { key, region, apps: { weatherAppId } } = LUIS_SETTINGS;
   return new LuisRecognizer({
     applicationId: weatherAppId,
     endpointKey: key,
@@ -35,7 +37,10 @@ export function createDarkSky() {
 }
 
 export function createBotAdapter() {
-  const adapter = new BotFrameworkAdapter();
+  const { appId, appPassword } = BOT_SETTINGS;
+  const adapter = appId && appPassword
+    ? new BotFrameworkAdapter({ appId, appPassword })
+    : new BotFrameworkAdapter();
   adapter.onTurnError = async (context, error) => {
     console.error('[ Unhandled Error ]', error);
     await context.sendActivity(`Oops, something went wrong! Check your bot's log.`);

@@ -20,6 +20,8 @@ export const DARK_SKY_SETTINGS = {
 };
 
 export const BOT_SETTINGS = {
+  appId: env('MSA_APP_ID', ''),
+  appPassword: env('MSA_PASSWORD', ''),
   directLineKey: env('DIRECT_LINE_KEY', ''),
 };
 

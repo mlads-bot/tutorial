@@ -205,3 +205,9 @@ Open the __Bot Framework Emulator__ and point it to the file called `04-Weather-
 You can now talk to your bot to ask about the weather.
 
 > __TROUBLESHOOTING__ If you see a message `The key used is invalid, malformed, empty, or doesn't match the region`, double check that your LUIS app is set to `public`. You can also use the GUI at [luis.ai](https://luis.ai) (`manage` -> `application information` -> `Make this app public`)
+
+## (Optional) Deploy to Azure
+
+Now that your bot is running locally, you can deploy it to an Azure Web App and connect to one of the Bot Framework Channels
+
+Please follow the guide for [deploying bot to azure](../../../assets/deploy-bot-azure.md).
