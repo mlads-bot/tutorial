@@ -33,7 +33,7 @@
     "botbuilder-dialogs": "^4.3.4",
     "dark-sky": "^1.1.5",
     "express": "^4.16.4",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.23",
     "request": "^2.88.0",
